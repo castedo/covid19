@@ -1,0 +1,21 @@
+{% extends '_base.html.jinja' %}
+
+{% block more_head %}
+<style>
+table.kable {
+  margin-bottom: 24px;
+}
+table.kable th {
+  width: 6rem;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h2 style="text-align: center">New York City, NY</h2>
+
+{{include_raw('_build/R/newyork.html')}}
+
+{% endblock content %}
+

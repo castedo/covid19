@@ -1,0 +1,65 @@
+
+```{r}
+source("util.R")
+source("data.R")
+suppressPackageStartupMessages({
+  library(scales)
+})
+knitr::opts_chunk$set(warning=FALSE) 
+```
+
+```{r  message=FALSE}
+location <- "NYC"
+local <- zoo.jhu.US.micro(State=='New York' & County=='New York City')
+local <- subset(local, confirmed > 0)
+pop <- get.pop.US(State=='New York' & County=='New York City')
+NYC <- local$deaths
+#LongIsland.NY <- zoo.jhu.US.micro(State=='New York' & County %in% c('Nassau','Suffolk'))$deaths
+US <- zoo.jhu.global.micro('US')$deaths
+Sweden <- zoo.jhu.global.micro('Sweden')$deaths
+Italy <- zoo.jhu.global.micro('Italy')$deaths
+Spain <- zoo.jhu.global.micro('Spain')$deaths
+Belgium <- zoo.jhu.global.micro('Belgium')$deaths
+Madrid.Comunidad <- read.esp.micromorts('MD')
+Lombardy.Italy <- read.ita.micromorts('03')
+fracmort <- window(cbind(US, NYC,
+                          Madrid.Comunidad, Lombardy.Italy,
+                          Sweden, Italy, Spain, Belgium)/1e6,
+                    start="2020-03-15")
+```
+
+`r format(pop/1e6, digits=2)` million inhabitants
+
+<div>Top three questions:</div>
+<ul>
+<li>Q1: Is an outbreak starting?</li>
+<li>Q2: How dangerous is it now?</li>
+<li>Q3: 
+  How close is `r location` to [herd immunity](../hit.html)?
+</li>
+</ul>
+
+```{r child="child/Q1.Rmd"}
+```
+
+```{r child="child/Q2.Rmd"}
+```
+
+```{r child="child/Q3.Rmd"}
+```
+
+#### Data Check
+
+Deaths per milion:
+```{r results='asis'}
+kable(tail(as.data.frame(NYC),3),
+      digits=1,
+      format="html", table.attr="class='kable'")
+```
+
+<div>Total:</div>
+```{r results='asis'}
+kable(tail(as.data.frame(local/1e6*pop),3),
+      format="html", table.attr="class='kable'")
+```
+

@@ -1,0 +1,32 @@
+
+### Q2: How dangerous is it now?
+
+The following numbers evaluate "danger #2" in
+<a href="../risk/two-dangers.html">this split of covid danger</a>.
+
+New Covid deaths
+<sup>
+[ * ](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
+</sup>
+per week per million in `r location`<br>
+```{r fig.height=6}
+ref <- data.frame(
+  y=c(3, 15, 35, 115, 180),
+  txt=c("2010-2019", "1950-1951", "1940-1941", "1900-1901", "1865"))
+autoplot.weekly.bar(weekly.deltas(local$deaths)) +
+  geom_hline(aes(yintercept=y, color=txt), ref) +
+  labs(x="Date", y="Weekly Deaths Per Million",
+       color="Reference\nAverage\nFlu/Pneumonia/TB**")
+```
+
+See [a historical perspective](../risk/history.html) for a broad context.
+
+<small>
+[ * What is counted as a death from COVID-19?](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
+<br>
+ ** 
+TB = Tuberculosis.
+Historical rates are age-adjusted.
+1865 rate is based on limited records, but follows the historical trend.
+</small>
+

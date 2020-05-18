@@ -1,0 +1,10 @@
+{% extends '_base.html.jinja' %}
+
+{% block content %}
+
+<h1>{{location}}</h1>
+
+{{include_raw('_build/R/' ~ Rfile ~ '.html')}}
+
+{% endblock content %}
+

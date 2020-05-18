@@ -1,0 +1,129 @@
+{% extends '_base.html.jinja' %}
+
+{% block more_head %}
+<style>
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% filter markdown %}
+
+<h4>What is the Herd Immunity Threshold (HIT)?</h4>
+
+The
+<a href="https://en.wikipedia.org/wiki/Herd_immunity">herd immunity</a> threshold (HIT)
+is a *hypothetical* fraction of a population.
+When a fraction of the population greater than HIT has immunity, a virus (or
+other infectious disease) will _theoretically_ stop spreading through the
+population.
+HIT is a _theoretical_ threshold and can not be known with exact
+certainty.  This threshold will change depending on many factors. One factor
+is seasonal effects of summer and winter in temperate climates.
+This will change the HIT for respiratory viruses like flu and coronavirus.
+Another factor is how much a population facilitates viral transmission
+(e.g. not social distancing, hand shaking, hand washing, etc...).
+
+<h4>Why does this site report herd immunity threshold (HIT) in terms of deaths?</h4>
+
+There is notable uncertainty around
+
+1. the herd immunity threshold (HIT) for COVID-19, and
+1. the total number of infections (asymptomatic or symptomatic, confirmed or unconfirmed) 
+
+Due to these uncertainties, HIT is reported in terms of deaths on this
+website. This page outlines the calculations, evidence and questions
+relating to the HIT levels reported in terms of total deaths.
+
+See [ratio of deaths to infections](ifr.html) for more details.
+
+
+<h4>How is the Herd Immunity Threshold (HIT) calculated?</h4>
+
+A simple calculation of HIT is <code>(1 - 1/R)</code> where <code>R</code> is
+<a href="r-estimates.html">an estimate of the basic reproduction number</a>.
+More sophisticated models of the population can raise [8] or lower [7], [6]
+the threshold.
+
+<h4>Aren't there really more COVID-19 deaths that are reported?</h4>
+
+Although not known with perfect certainty, the total number of deaths can be
+estimated. These web pages and calculation
+use the daily death counts reported *quickly* by health authorities
+worldwide. The actual number of deaths due to COVID-19 is almost certainly
+higher with slower more careful analysis.
+
+**Opinion:** Actual deaths due to COVID-19 will likely be somewhere 
+around 50% higher after slower and more careful analysis. Maybe even twice
+as high.
+
+Attributing deaths to causes is not simple. Death can have multiple causes.
+For an excellent discussion on counting COVID-19 deaths read
+[What is counted as a death from COVID-19?](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
+
+<h4>Will we get immunity to COVID-19?</h4>
+
+Immunity for individuals often decreases over time.
+Immunity is short (~1 year) for
+<a href="https://en.wikipedia.org/wiki/Coronavirus#Infection_in_humans">mild coronaviruses OC43 and 229E</a>
+(~1 year), but longer lasting (more than 3 years) for severe coronaviruses such as
+<a href="https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome_coronavirus">SARS-CoV-1</a> [1]
+(the ancestor of
+<a href="https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome_coronavirus_2">SARS-CoV-2</a>
+). Due to births and decreasing immunity, the herd immunity threshold does not imply that a virus
+will stop spreading permanently and will die out.
+
+** Opinion:**
+*The vast majority of individuals with symptomatic COVID-19 will have immunity until a vaccine is found.*
+
+
+
+{#
+<h4>How much of the population is infected?</h4>
+
+Population testing of how many people have antibodies started in late April. The presense of antibodies
+indicates likely prior infection from
+<a href="https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome_coronavirus_2">SARS-CoV-2</a>.
+However it is not clear if some antibodies detected are due to the 
+<a href="https://en.wikipedia.org/wiki/Coronavirus#Infection_in_humans">mild coronaviruses</a>.
+The presense of antibodies may be indicative of only partial immunity lasting
+less than a year for some individuals.
+#}
+
+{% endfilter %}
+
+
+<h3>Sources</h3>
+<ul>
+<li>
+[1] <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2851497/">
+  Duration of Antibody Responses after Severe Acute Respiratory Syndrome</a>
+</li>
+<li>
+[2] <a href="https://www.medrxiv.org/content/10.1101/2020.04.30.20085613v1.full">
+  Humoral immune response and prolonged PCR positivity in a cohort of 1343 SARS-CoV 2 patients in the New York City region</a>
+</li>
+<li>{# Discussion of overshoot #}
+ [5] <a href="https://www.medrxiv.org/content/10.1101/2020.03.13.20034892v2">
+  If long-term suppression is not possible, how do we minimize mortality for COVID-19 and other emerging infectious disease outbreaks?</a>
+</li>
+<li>
+ [6] <a href="https://www.medrxiv.org/content/10.1101/2020.04.27.20081893v1">
+  Individual variation in susceptibility or exposure to SARS-CoV-2 lowers the herd immunity threshold</a>
+</li>
+<li>
+ [7] <a href="https://arxiv.org/abs/2005.03085">
+  The disease-induced herd immunity level for Covid-19 is substantially lower than the classical herd immunity level</a>
+</li>
+<li>
+ [8] <a href="https://europepmc.org/article/pmc/pmc1635496">
+  Network frailty and the geometry of herd immunity.</a>
+</li>
+<li>
+ [9] <a href="https://arxiv.org/abs/2002.04004">
+   Beyond R<sub>0</sub>: Heterogeneity in secondary infections and probabilistic epidemic forecasting</a>
+</li>
+</ul>
+
+{% endblock content %}
+

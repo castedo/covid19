@@ -1,0 +1,41 @@
+
+```{r}
+source('retrogression.R')
+```
+
+## Mathematical Details
+
+... TBD ...
+
+If $m < `r pivot.mcmorts`$ then
+$$
+  `r 1/log.slope` \; \log\frac{m}{ `r ref.mcmort` }
+$$
+else
+$$
+  (2020 - `r pivot.year`) + \frac{m - `r pivot.mcmorts`}{ `r linear.slope` }
+$$
+
+<dl>
+<dt>Hypothetical reference risk for 2020 had there been no COVID-19:</dt>
+<dd>`r ref.mcmort` micromorts/year</dd>
+<dt>Pivot year</dt>
+<dd>`r pivot.year`</dd>
+<dt>Linear slope</dt>
+<dd>`r linear.slope` micromorts/year<sup>2<sup></dd>
+<dt>Log slope (approx micromorts/year fraction increase per year)</dt>
+<dd>`r log.slope` log(micromorts/year)/year</dd>
+</dl>
+
+
+<!---
+Isoniazid launched 1952:
+Walker, S. R. (2012). Trends and Changes in Drug Research and Development. Springer Science & Business Media. p. 109. ISBN 9789400926592.
+-->
+
+<!---
+https://en.wikipedia.org/wiki/History_of_tuberculosis
+https://en.wikipedia.org/wiki/Streptomycin#History
+https://en.wikipedia.org/wiki/Spittoon#United_States_in_the_19th_century
+-->
+

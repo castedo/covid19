@@ -1,0 +1,104 @@
+```{r message=FALSE}
+source("util.R")
+knitr::opts_chunk$set(fig.height=3, warning=FALSE)
+source("data.R")
+q <- quote(State=='Florida' & County=='Monroe')
+monroe <- zoo.nyt(eval(q))
+pop <- get.pop.US(eval(q))
+```
+
+
+### Q1: Is an outbreak starting?
+
+Daily change in new cases (averaged over week):<br>
+```{r}
+autoplot(ave.daily.change(monroe$confirmed)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype="dashed", color="grey") +
+  theme(panel.grid.minor = element_blank()) +
+  scale_x_eow(monroe$confirmed) +
+  scale_y_daily_change()
+```
+
+
+### Q2: How dangerous is it now?
+
+The following numbers evaluate "danger #2" in
+<a href="../risk/two-dangers.html">this split of covid danger</a>.
+
+For context, about <b>one death per week</b> is the rate of 
+pneumonia/flu deaths in the Keys (based on Florida rates).
+
+Covid deaths
+<sup>
+[ * ](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
+</sup>
+per week:<br>
+```{r}
+autoplot.weekly.bar(weekly.deltas(monroe$deaths)) +
+  scale_y_continuous(breaks=0:max(monroe$deaths))
+```
+
+See [a historical perspective](../risk/history.html) for a broad context.
+
+<small>
+[ * What is counted as a death from COVID-19?](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
+</small>
+
+### Q3: Can the Keys "beat" coronavirus?
+
+Weekly covid deaths
+<sup>
+[ * ](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
+</sup>
+per million of "winning" counties<br>
+compared with<br>
+2% and 1% of Keys cases per million:<br>
+```{r message=FALSE, fig.height=6}
+asof <- end(monroe)
+weekly.deaths <- function(country) {
+  weekly.deltas(window(zoo.jhu.global.micro(country),end=asof))$deaths
+}
+taiwan <- weekly.deltas(window(zoo.jhu.global(Country=='Taiwan*'),end=asof)/23.8)
+monroe.micro <- weekly.deltas(monroe$confirmed/pop*1e6)
+winners <- window(merge(
+  `2% Keys cases`= 0.02*monroe.micro,
+  `1% Keys cases`= 0.01*monroe.micro,
+  `Trinidad&Tobago`=weekly.deaths('Trinidad and Tobago'),
+  `New Zealand`=weekly.deaths('New Zealand'),
+  `Australia`=weekly.deaths('Australia'),
+  Singapore=weekly.deaths('Singapore'),
+  Japan=weekly.deaths('Japan'),
+  Korea=weekly.deaths('Korea, South'),
+  `Taiwan`=taiwan$deaths
+), start="2020-03-01")
+autoplot(winners, facet=NULL) +
+  geom_point() +
+  scale_x_eow(winners) +
+  xlab("2020") +
+  ylab("Weekly COVID Deaths Per Million")
+```
+
+### Further Details
+
+New cases per week:<br>
+```{r}
+autoplot.weekly.bar(weekly.deltas(monroe$confirmed))
+```
+
+New cases per day:<br>
+```{r}
+autoplot(daily.deltas(monroe$confirmed), geom='blank') +
+  scale_x_eow(monroe$confirmed) +
+  geom_col()
+```
+
+
+#### Data check
+
+County population = `r format(pop, big.mark=',')`
+
+```{r results='asis'}
+kable(tail(as.data.frame(monroe),3))
+```
+

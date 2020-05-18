@@ -1,0 +1,84 @@
+{% extends '_base.html.jinja' %}
+
+{% block more_head %}
+<style>
+table.danger {
+  max-width: 40rem;
+  text-align: center;
+}
+table.danger th {
+  width: 30%;
+}
+main h2 {
+  text-align: center;
+  margin-bottom: 36px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h2>Does social distancing mean I am in danger?</h2>
+<a name="two-dangers"></a>
+
+<p>Obviously
+<a href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019">COVID-19</a>
+has a very dangerous potential to spread rapidly through a population.
+But this does not necessary mean COVID-19 is <em>currently</em> dangerous <em>to you</em>.
+
+<p>Contagious diseases (e.g.
+<a href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019">COVID-19</a>)
+carry two kinds of danger:
+<ol>
+<li>epidemic contagion (rapid spread of disease from person to person)</li>
+<li>individual sickness/death</li>
+</ol>
+</p>
+
+<p>Rolling down a hill has analogous dangers:
+<table class='table danger'>
+<tr>
+  <th></th>
+  <th>
+<img style="width: 100px"
+  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Coronavirusdiagram.jpg/242px-Coronavirusdiagram.jpg">
+<br>
+contagious diseases
+</th>
+  <th>
+<img style="width: 100px"
+src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Downhill_Bicycle_-_The_Noun_Project.svg/200px-Downhill_Bicycle_-_The_Noun_Project.svg.png">
+<br>
+rolling down a hill</th>
+</tr>
+<tr>
+  <td>Danger 1</td>
+  <td>epidemic contagion</td>
+  <td>uncontrolled <em>acceleration</em></td>
+</tr>
+<tr>
+  <td>Danger 2</td>
+  <td>individual sickness/death</td>
+  <td>crash injury/death</td>
+</tr>
+</table>
+</p>
+
+<p>
+The danger of uncontrolled acceleration of COVID-19 has been successfully
+mitigated by social distancing and related measures. This danger is separate
+from the <u>current</u> level of danger for sickness and death as
+<u>individuals</u>.
+</p>
+<p><em>
+Sometimes brakes are applied when there is danger of acceleration,
+and not because you're currently in danger of crashing.
+</em></p>
+
+<p>
+See <a href="history.html">a historical perspective</a>
+for how past danger levels compare to current levels in selected locations.
+</p>
+
+{% endblock content %}
+

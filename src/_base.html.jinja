@@ -1,0 +1,65 @@
+{% if 'OFFLINE' in flags %}
+{% set bootstrap = siteroot + "extern" %}
+{% set mathjax = this.relroot + "../extern/MathJax.js" %}
+{% else %}
+{% set bootstrap = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1" %}
+{% set mathjax = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" %}
+{% endif %}
+{% set title = title or "Castedo Ellerman's Covid-19 Pages" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{bootstrap}}/css/bootstrap.min.css"
+   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% if 'PRODUCTION' in flags %}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-1083274-4', 'auto');
+  if (document.cookie.indexOf('Tester=true') > -1) { ga('set', 'dimension1', 'Tester'); }
+  ga('send', 'pageview');
+</script>
+{% endif %}
+<title>{{ title }}</title>
+<style>
+{% include "_style.css" %}
+</style>
+<link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
+</style>
+{% block more_head %}{% endblock %}
+</head>
+<body>
+<header>
+  <h1><a href="{{this.relroot}}index.html">ref.castedo.com<wbr>/covid19/</a></h1>
+</header>
+<main class="trunk container">
+<div id="mc_embed_signup">
+<form action="https://castedo.us19.list-manage.com/subscribe/post?u=d3e772c3ca540b014b91e731e&amp;id=8cdb45653f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+	<label for="mce-EMAIL">Subscribe for infrequent notifications of new analysis</label>
+	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d3e772c3ca540b014b91e731e_8cdb45653f" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+<hr>
+{% block content %}
+{% endblock %}
+</main>
+<footer>
+  <div class="container">
+      <a href="mailto:castedo@castedo.com" class="email">castedo@castedo.com</a>
+      <a href="{{this.relroot}}index.html">ref.castedo.com/covid19/</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+

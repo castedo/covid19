@@ -1,0 +1,263 @@
+year,cause,variable,value
+1900,Tuberculosis,Number,38820
+1900,Pneumonia & Flu,Number,40362
+1901,Tuberculosis,Number,38434
+1901,Pneumonia & Flu,Number,39908
+1902,Tuberculosis,Number,35859
+1902,Pneumonia & Flu,Number,33208
+1903,Tuberculosis,Number,37102
+1903,Pneumonia & Flu,Number,35455
+1904,Pneumonia & Flu,Number,40989
+1904,Tuberculosis,Number,40125
+1905,Tuberculosis,Number,39168
+1905,Pneumonia & Flu,Number,36855
+1906,Tuberculosis,Number,59393
+1906,Pneumonia & Flu,Number,52797
+1907,Pneumonia & Flu,Number,62199
+1907,Tuberculosis,Number,60194
+1908,Tuberculosis,Number,62628
+1908,Pneumonia & Flu,Number,58294
+1909,Tuberculosis,Number,69105
+1909,Pneumonia & Flu,Number,65503
+1910,Pneumonia & Flu,Number,73983
+1910,Tuberculosis,Number,73028
+1911,Tuberculosis,Number,83663
+1911,Pneumonia & Flu,Number,78421
+1912,Tuberculosis,Number,79734
+1912,Pneumonia & Flu,Number,75869
+1913,Tuberculosis,Number,83434
+1913,Pneumonia & Flu,Number,81880
+1914,Tuberculosis,Number,86359
+1914,Pneumonia & Flu,Number,80703
+1915,Pneumonia & Flu,Number,90330
+1915,Tuberculosis,Number,86726
+1916,Pneumonia & Flu,Number,109335
+1916,Tuberculosis,Number,92688
+1917,Pneumonia & Flu,Number,115526
+1917,Tuberculosis,Number,100789
+1918,Pneumonia & Flu,Number,464959
+1918,Tuberculosis,Number,118334
+1919,Pneumonia & Flu,Number,185440
+1919,Tuberculosis,Number,104486
+1920,Pneumonia & Flu,Number,178438
+1920,Tuberculosis,Number,97366
+1921,Pneumonia & Flu,Number,86667
+1921,Tuberculosis,Number,85739
+1922,Pneumonia & Flu,Number,122622
+1922,Tuberculosis,Number,88385
+1923,Pneumonia & Flu,Number,146868
+1923,Tuberculosis,Number,88788
+1924,Pneumonia & Flu,Number,114456
+1924,Tuberculosis,Number,87346
+1925,Pneumonia & Flu,Number,124122
+1925,Tuberculosis,Number,86510
+1926,Pneumonia & Flu,Number,147143
+1926,Tuberculosis,Number,88740
+1927,Pneumonia & Flu,Number,109405
+1927,Tuberculosis,Number,85194
+1928,Pneumonia & Flu,Number,161903
+1928,Tuberculosis,Number,89007
+1929,Pneumonia & Flu,Number,168986
+1929,Tuberculosis,Number,86885
+1930,Pneumonia & Flu,Number,120171
+1930,Tuberculosis,Number,83352
+1931,Pneumonia & Flu,Number,127033
+1931,Tuberculosis,Number,80129
+1932,Pneumonia & Flu,Number,127626
+1932,Tuberculosis,Number,74267
+1933,Pneumonia & Flu,Number,120142
+1933,Tuberculosis,Number,74842
+1934,Pneumonia & Flu,Number,122441
+1934,Tuberculosis,Number,71609
+1935,Pneumonia & Flu,Number,132625
+1935,Tuberculosis,Number,70080
+1936,Pneumonia & Flu,Number,153189
+1936,Tuberculosis,Number,71527
+1937,Pneumonia & Flu,Number,148014
+1937,Tuberculosis,Number,69324
+1938,Pneumonia & Flu,Number,104443
+1938,Tuberculosis,Number,63735
+1939,Pneumonia & Flu,Number,99097
+1939,Tuberculosis,Number,61609
+1940,Pneumonia & Flu,Number,92525
+1940,Tuberculosis,Number,60428
+1941,Pneumonia & Flu,Number,84982
+1941,Tuberculosis,Number,59251
+1942,Pneumonia & Flu,Number,74532
+1942,Tuberculosis,Number,57690
+1943,Pneumonia & Flu,Number,90115
+1943,Tuberculosis,Number,57005
+1944,Pneumonia & Flu,Number,81804
+1944,Tuberculosis,Number,54731
+1945,Pneumonia & Flu,Number,68380
+1945,Tuberculosis,Number,52916
+1946,Pneumonia & Flu,Number,62324
+1946,Tuberculosis,Number,50911
+1947,Pneumonia & Flu,Number,61836
+1947,Tuberculosis,Number,48064
+1948,Pneumonia & Flu,Number,56493
+1948,Tuberculosis,Number,43833
+1949,Pneumonia & Flu,Number,44640
+1949,Tuberculosis,Number,39100
+1950,Pneumonia & Flu,Number,47120
+1950,Tuberculosis,Number,33959
+1951,Pneumonia & Flu,Number,48169
+1951,Tuberculosis,Number,30863
+1952,Pneumonia & Flu,Number,46265
+1952,Tuberculosis,Number,24621
+1953,Pneumonia & Flu,Number,52238
+1953,Tuberculosis,Number,19544
+1954,Pneumonia & Flu,Number,40991
+1955,Pneumonia & Flu,Number,44510
+1956,Pneumonia & Flu,Number,47103
+1957,Pneumonia & Flu,Number,61001
+1960,Pneumonia & Flu,Number,66803
+1960,Tuberculosis,Number,10866
+1961,Pneumonia & Flu,Number,55175
+1961,Tuberculosis,Number,9938
+1962,Pneumonia & Flu,Number,59995
+1962,Tuberculosis,Number,9506
+1963,Pneumonia & Flu,Number,70761
+1963,Tuberculosis,Number,9311
+1964,Pneumonia & Flu,Number,59451
+1964,Tuberculosis,Number,8303
+1965,Pneumonia & Flu,Number,61903
+1965,Tuberculosis,Number,7934
+1966,Pneumonia & Flu,Number,63615
+1966,Tuberculosis,Number,7625
+1967,Pneumonia & Flu,Number,56892
+1968,Pneumonia & Flu,Number,73492
+1968,Tuberculosis,Number,6292
+1900,Tuberculosis,Per100K,194.4
+1900,Pneumonia & Flu,Per100K,202.2
+1901,Tuberculosis,Per100K,189.9
+1901,Pneumonia & Flu,Per100K,197.2
+1902,Tuberculosis,Per100K,174.2
+1902,Pneumonia & Flu,Per100K,161.3
+1903,Tuberculosis,Per100K,177.2
+1903,Pneumonia & Flu,Per100K,169.3
+1904,Pneumonia & Flu,Per100K,192.1
+1904,Tuberculosis,Per100K,188.1
+1905,Tuberculosis,Per100K,179.9
+1905,Pneumonia & Flu,Per100K,169.3
+1906,Tuberculosis,Per100K,175.8
+1906,Pneumonia & Flu,Per100K,156.3
+1907,Pneumonia & Flu,Per100K,180
+1907,Tuberculosis,Per100K,174.2
+1908,Tuberculosis,Per100K,162.1
+1908,Pneumonia & Flu,Per100K,150.9
+1909,Tuberculosis,Per100K,156.3
+1909,Pneumonia & Flu,Per100K,148.1
+1910,Pneumonia & Flu,Per100K,155.9
+1910,Tuberculosis,Per100K,153.8
+1911,Tuberculosis,Per100K,155.1
+1911,Pneumonia & Flu,Per100K,145.4
+1912,Tuberculosis,Per100K,145.4
+1912,Pneumonia & Flu,Per100K,138.4
+1913,Tuberculosis,Per100K,143.5
+1913,Pneumonia & Flu,Per100K,140.8
+1914,Tuberculosis,Per100K,141.7
+1914,Pneumonia & Flu,Per100K,132.4
+1915,Pneumonia & Flu,Per100K,145.9
+1915,Tuberculosis,Per100K,140.1
+1916,Pneumonia & Flu,Per100K,163.3
+1916,Tuberculosis,Per100K,138.4
+1917,Pneumonia & Flu,Per100K,164.5
+1917,Tuberculosis,Per100K,143.5
+1918,Pneumonia & Flu,Per100K,588.5
+1918,Tuberculosis,Per100K,149.8
+1919,Pneumonia & Flu,Per100K,223
+1919,Tuberculosis,Per100K,125.6
+1920,Pneumonia & Flu,Per100K,207.3
+1920,Tuberculosis,Per100K,113.1
+1921,Pneumonia & Flu,Per100K,98.7
+1921,Tuberculosis,Per100K,97.6
+1922,Pneumonia & Flu,Per100K,132.3
+1922,Tuberculosis,Per100K,95.3
+1923,Pneumonia & Flu,Per100K,151.7
+1923,Tuberculosis,Per100K,91.7
+1924,Pneumonia & Flu,Per100K,115.2
+1924,Tuberculosis,Per100K,87.9
+1925,Pneumonia & Flu,Per100K,121.7
+1925,Tuberculosis,Per100K,84.8
+1926,Pneumonia & Flu,Per100K,141.7
+1926,Tuberculosis,Per100K,85.5
+1927,Pneumonia & Flu,Per100K,102.2
+1927,Tuberculosis,Per100K,79.6
+1928,Pneumonia & Flu,Per100K,142.5
+1928,Tuberculosis,Per100K,78.3
+1929,Pneumonia & Flu,Per100K,146.5
+1929,Tuberculosis,Per100K,75.3
+1930,Pneumonia & Flu,Per100K,102.5
+1930,Tuberculosis,Per100K,71.1
+1931,Pneumonia & Flu,Per100K,107.5
+1931,Tuberculosis,Per100K,67.8
+1932,Pneumonia & Flu,Per100K,107.3
+1932,Tuberculosis,Per100K,62.5
+1933,Pneumonia & Flu,Per100K,95.7
+1933,Tuberculosis,Per100K,59.6
+1934,Pneumonia & Flu,Per100K,96.9
+1934,Tuberculosis,Per100K,56.7
+1935,Pneumonia & Flu,Per100K,104.2
+1935,Tuberculosis,Per100K,55.1
+1936,Pneumonia & Flu,Per100K,119.6
+1936,Tuberculosis,Per100K,55.9
+1937,Pneumonia & Flu,Per100K,114.9
+1937,Tuberculosis,Per100K,53.8
+1938,Pneumonia & Flu,Per100K,80.4
+1938,Tuberculosis,Per100K,49.1
+1939,Pneumonia & Flu,Per100K,75.7
+1939,Tuberculosis,Per100K,47.1
+1940,Pneumonia & Flu,Per100K,70.3
+1940,Tuberculosis,Per100K,45.9
+1941,Pneumonia & Flu,Per100K,63.8
+1941,Tuberculosis,Per100K,44.5
+1942,Pneumonia & Flu,Per100K,55.7
+1942,Tuberculosis,Per100K,43.1
+1943,Pneumonia & Flu,Per100K,67.1
+1943,Tuberculosis,Per100K,42.5
+1944,Pneumonia & Flu,Per100K,61.6
+1944,Tuberculosis,Per100K,41.2
+1945,Pneumonia & Flu,Per100K,51.6
+1945,Tuberculosis,Per100K,39.9
+1946,Pneumonia & Flu,Per100K,44.5
+1946,Tuberculosis,Per100K,36.4
+1947,Pneumonia & Flu,Per100K,43.1
+1947,Tuberculosis,Per100K,33.5
+1948,Pneumonia & Flu,Per100K,38.7
+1948,Tuberculosis,Per100K,30
+1949,Pneumonia & Flu,Per100K,30
+1949,Tuberculosis,Per100K,26.3
+1950,Pneumonia & Flu,Per100K,31.3
+1950,Tuberculosis,Per100K,22.5
+1951,Pneumonia & Flu,Per100K,31.4
+1951,Tuberculosis,Per100K,20.1
+1952,Pneumonia & Flu,Per100K,29.7
+1952,Tuberculosis,Per100K,15.8
+1953,Pneumonia & Flu,Per100K,33
+1953,Tuberculosis,Per100K,12.4
+1954,Pneumonia & Flu,Per100K,25.4
+1955,Pneumonia & Flu,Per100K,27.1
+1956,Pneumonia & Flu,Per100K,28.2
+1957,Pneumonia & Flu,Per100K,35.8
+1958,Pneumonia & Flu,Per100K,33.1
+1958,Tuberculosis,Per100K,7.1
+1959,Pneumonia & Flu,Per100K,31.3
+1959,Tuberculosis,Per100K,6.5
+1960,Pneumonia & Flu,Per100K,37.3
+1960,Tuberculosis,Per100K,6.1
+1961,Pneumonia & Flu,Per100K,30.2
+1961,Tuberculosis,Per100K,5.4
+1962,Pneumonia & Flu,Per100K,32.3
+1962,Tuberculosis,Per100K,5.1
+1963,Pneumonia & Flu,Per100K,37.5
+1963,Tuberculosis,Per100K,4.9
+1964,Pneumonia & Flu,Per100K,31.1
+1964,Tuberculosis,Per100K,4.3
+1965,Pneumonia & Flu,Per100K,32
+1965,Tuberculosis,Per100K,4.1
+1966,Pneumonia & Flu,Per100K,32.5
+1966,Tuberculosis,Per100K,3.9
+1967,Pneumonia & Flu,Per100K,26.8
+1968,Pneumonia & Flu,Per100K,36.9
+1968,Tuberculosis,Per100K,3.2

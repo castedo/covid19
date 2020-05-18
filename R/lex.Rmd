@@ -1,0 +1,41 @@
+
+```{r}
+source("util.R")
+library(scales)
+pop <- 33792
+lex <- fread("../src/lex/lexington-cases.csv")
+lex <- tail(lex, -1)
+lex <- zoo(lex$Cases, as.Date(lex$Date))
+knitr::opts_chunk$set(fig.height=3, warning=FALSE) 
+```
+
+**As of `r format(end(lex), "%a %b %d")`:**
+
+New cases per week:<br>
+```{r}
+autoplot.weekly.bar(weekly.deltas(lex))
+```
+
+Daily change in new cases (averaged over week):<br>
+```{r}
+ts <- ave.daily.change(lex)
+ts[time(ts) <= "2020-03-28"] <- NA
+autoplot(ts) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype="dashed", color="grey") +
+  theme(panel.grid.minor = element_blank()) +
+  scale_x_eow(lex) +
+  scale_y_daily_change()
+```
+
+New cases per day:<br>
+```{r}
+autoplot(daily.deltas(lex), geom='blank') +
+  scale_x_eow(lex) +
+  geom_col()
+```
+
+Raw daily data: [lexington-cases.csv](../lex/lexington-cases.csv)
+<br>
+Source: [Lexington Town Website](https://www.lexingtonma.gov/public-health/pages/everything-you-need-know-during-covid-19-state-emergency)
+

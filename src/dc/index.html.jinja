@@ -1,0 +1,23 @@
+{% extends '_topq.html.jinja' %}
+{% set location = 'Core DC Metro Area' %}
+{% set Rfile = 'dc' %}
+
+{% block more_head %}
+<style>
+table.kable {
+  margin-bottom: 24px;
+}
+table.kable th {
+  width: 6rem;
+}
+</style>
+{% endblock more_head %}
+
+{% block ocontent %}
+
+<h1>Core DC Metro Area</h1>
+
+{{include_raw('_build/R/dc.html')}}
+
+{% endblock ocontent %}
+

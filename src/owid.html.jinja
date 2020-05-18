@@ -1,0 +1,36 @@
+{% extends '_base.html.jinja' %}
+
+{% block content %}
+
+<h2 style="text-align: center; margin-bottom: 24px">
+  Favorite
+  <a href="https://ourworldindata.org/coronavirus">ourworldindata.org</a>
+  Plots</h2>
+
+{% set picks = 'BEL+CAN+FRA+DEU+GRC+IRN+ITA+JPN+NOR+KOR+ESP+SWE+CHE+TWN+USA+AUS+NZL+GBR+ISL+LUX' %}
+
+<iframe style="width: 100%; height: 600px; border: 0px none;"
+  src="https://ourworldindata.org/grapher/covid-daily-deaths-trajectory-per-million?country={{picks}}">
+</iframe>
+
+<iframe style="width: 100%; height: 600px; border: 0px none;"
+  src="https://ourworldindata.org/grapher/covid-daily-cases-trajectory-per-million?zoomToSelection=true&country={{picks}}">
+</iframe>
+
+<iframe style="width: 100%; height: 600px; border: 0px none;"
+  src="https://ourworldindata.org/grapher/total-covid-deaths-per-million?tab=chart&time=2020-03-01..&country={{picks}}">
+</iframe>
+
+<iframe style="width: 100%; height: 600px; border: 0px none;"
+  src="https://ourworldindata.org/grapher/covid-confirmed-cases-per-million-since-1-per-million?country={{picks}}">
+</iframe>
+
+{#
+<iframe style="width: 100%; height: 600px; border: 0px none;"
+  src="https://ourworldindata.org/grapher/new-covid-cases-per-million?tab=chart&country={{picks}}">
+</iframe>
+#}
+
+
+{% endblock content %}
+

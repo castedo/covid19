@@ -1,0 +1,59 @@
+{% extends '_base.html.jinja' %}
+{% set title = "Counting Deaths" %}
+
+{% block more_head %}
+
+{% endblock %}
+
+{% block content %}
+
+{#
+<p>
+Most statistics on COVID-19 danger are for the risk of dying
+<b>if</b> you become a <b>case</b> of COVID-19.
+But reactions to
+<a href="https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome_coronavirus_2">SARS-Cov-2</a>
+infection range from death to symptoms. What is measured as 'a case'
+will vary widely depending on context.
+CFR numbers can vary ten fold depending on what is meant by 'a case'.
+</p>
+<p>In contrast to what is 'a case', it is usually very clear whether
+somebody is dead or alive.</p>
+#}
+
+{#
+<h3>Deaths Caused By COVID-19</h3>
+<p>We can expect a high degree of accuracy in determining whether somebody is
+dead vs alive.
+But deciding <em>why</em> somebody has died is more complicated. Sometimes
+there are multiple causes and sometimes it takes too much time and effort to
+determine the causes.
+Keep in mind that all numbers for covid-19 deaths are based on some criteria.
+Some differences in criteria are:
+<ul>
+<li>Is cause of death determined by hospital staff? (fast)</li>
+<li>Is cause of death determined by the morgue? (slow)</li>
+<li>Do hospital staff, especially early in an outbreak, estimate pneumonia as
+the more likely cause rather than covid-19?</li>
+<li>Is covid-19 only considered a cause with a RNA based test or is clinical
+judgement by hospital stuff sufficient?</li>
+</li>
+<li>Is death due to some other immediate reason (e.g. stroke)
+ but made more likely due to the pandemic (e.g. late ambulances)
+ caused by covid-19?</li>
+</ul>
+Daily statistics are likely going to be based on quick
+classification by hospital staff. In contrast, in can take weeks before
+death certificates from the morgue show up.
+Whatever criteria is used to count deaths due to covid-19,
+daily counts you see are likely going to be lower than the number of deaths actually caused by covid-19. After an outbreak is clear, hospital stuff are more likely
+to estimate covid-19 rather than pneumonia as a cause.
+</p>
+<p>
+Learn even more about the different ways covid-19 deaths can be counted
+<a href="https://ourworldindata.org/coronavirus#deaths-from-covid-19-background">in this text on ourworldindata.org</a>.
+</p>
+#}
+
+{% endblock content %}
+

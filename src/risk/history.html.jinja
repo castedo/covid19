@@ -1,0 +1,80 @@
+{% extends '_base.html.jinja' %}
+{% set title = "Historical Perspective for COVID-19" %}
+
+{% block more_head %}
+<style>
+img.poster {
+  float:right;
+  margin-left: 16px;
+  margin-bottom: 16px;
+}
+main h1 {
+ text-align: left;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<img class="poster" src="TB_flu_poster.jpg">
+<h1>Pathogenic Pulmonary Disease (PPD)</h1>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019">COVID-19</a>
+is caused by a new strain of
+<a href="https://en.wikipedia.org/wiki/Coronavirus">coronavirus</a>.
+But COVID-19 is very much a type of danger that has always been around.
+COVID-19 is a "Pathogenic Pulmonary Disease" (PPD), along with
+<a href="https://en.wikipedia.org/wiki/Influenza">influenza</a>,
+<a href="https://en.wikipedia.org/wiki/Pneumonia">pneumonia</a>, and
+<a href="https://en.wikipedia.org/wiki/Tuberculosis">tuberculosis</a>.
+These PPDs have caused deaths every year, year-round, for millennia.
+</p>
+
+{#
+<h3>A Future of Dangers Past</h3>
+<p>
+Many dangers have been reduced decade after decade, in a clear general trend
+of progress.
+This is true for Pathogenic Pulmonary Diseases in the USA since the late 1800s.
+A simple and practical rough measure of average danger from Pathogenic
+Pulmonary Diseases is <em>weekly deaths per million</em>.
+</p>
+
+Past danger levels of Pathogenic Pulmonary Diseases provide
+context to think about your danger level during the 2020 pandemic.
+Consider how many decades into the past would you need to retrogress
+to live in a comparable level of danger from Pathogenic Pulmonary Disease.
+
+#}
+
+<h4>Weekly Deaths vs Case Fatality Rate (CFR)</h4>
+
+<p>
+Most reporting on COVID-19 danger is for the risk of dying
+<b>if you get covid-19</b>.
+But what is your risk of getting COVID-19?
+Your risk of dying <b>if you have</b> active
+<a href="https://en.wikipedia.org/wiki/Tuberculosis">tuberculosis</a> is
+<a href="https://www.who.int/news-room/fact-sheets/detail/tuberculosis">
+almost 50%</a>!
+Yet those of us fortunate enough to live in the developed world, do not
+consider tuberculosis a danger.
+</p>
+
+<p>
+<em>Weekly deaths per million people</em> is a rough measurement of the
+<em>combined</em> risk of getting covid-19 and then dying from it.
+</p>
+
+<div style="clear:both"></div>
+{{include_raw('_build/R/history.html')}}
+
+<h4>See Also</h4>
+<p>
+<a href="retrogression.html">Decades of Risk Retrogression</a> is
+an alternative metric for COVID-19 danger from this historical perspective.
+</p>
+
+{% endblock content %}
+

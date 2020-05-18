@@ -1,0 +1,22 @@
+{% extends '_base.html.jinja' %}
+{% set title = "Decades of Risk Retrogression Math" %}
+
+{% block more_head %}
+<script src="{{mathjax}}" type="text/javascript"></script>
+<style>
+</style>
+<script>
+MathJax.Hub.Config({
+    jax: ["input/TeX","output/HTML-CSS"],
+    displayAlign: "left",
+    displayIndent: "48px"
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+{{include_raw('_build/R/risk-math.html')}}
+
+{% endblock content %}
+

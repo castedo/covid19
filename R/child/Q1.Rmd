@@ -1,0 +1,26 @@
+
+### Q1: Is an outbreak starting?
+
+If the rate of new cases is growing (above 0%) that is not good
+(exponential growth bad).
+
+Growth/Shrinking of Rate of New Cases
+<sup>
+ *
+</sup>
+<br>
+```{r warning=FALSE, fig.height=3}
+autoplot(ave.daily.change(local$confirmed)) +
+  geom_point() +
+  geom_hline(yintercept = 0, linetype="dashed", color="red") +
+  theme(panel.grid.minor = element_blank()) +
+  scale_x_eow(local$confirmed) +
+  scale_y_daily_change() +
+  labs(x="Date", y="Daily Growth/Shrinking")
+```
+
+<small>
+* Rate of new cases is weekly,
+  but change % is quoted in terms of daily growth/shrinking.
+</small>
+

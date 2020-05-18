@@ -1,0 +1,61 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: #996600;
+}
+body > .trunk {
+  flex-grow: 1;
+  box-shadow: 0 0 20px #c8c8c8;
+  padding-top: 4px;
+  padding-bottom: 24px;
+}
+a {
+  text-decoration: none;
+}
+a, a:hover {
+  color: #c73200;
+}
+header {
+  border-bottom: 10px solid #f63;
+  background: #fff;
+  padding: 16px 0 12px;
+}
+header h1 {
+  text-align: center;
+  font-size: 1.75rem;
+}
+footer {
+  background: #bdbdbd;
+  padding: 12px 0;
+}
+footer a {
+  color: #c73200;
+  margin: 0 2px;
+}
+footer .email {
+  float: right;
+  color: #795100;
+}
+main img {
+  max-width: 100%;
+}
+main h1 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+main h3 {
+ margin-top: 20px;
+ margin-bottom: 16px;
+}
+/* from pandoc */
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+

@@ -1,0 +1,70 @@
+{% extends '_base.html.jinja' %}
+
+{% block more_head %}
+<style>
+main h2 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+main h4 {
+  margin-top: 16px;
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<h2>The Florida Keys <small>(Monroe County)</small></h2>
+
+<p>
+<a href="about.html">What makes the Keys an interesting case for study?</a>
+</p>
+
+<div>Top three questions:</div>
+<ul>
+<li>Q1: Is an outbreak starting?</li>
+<li>Q2: How dangerous is it now?</li>
+<li>Q3: Can the Keys "beat" coronavirus?</li>
+</li>
+</ul>
+
+
+{{include_raw('_build/R/keywest.html')}}
+
+
+<h4>Extra Goodies</h4>
+{% set picks = 'TTO+JPN+NZL+AUS+ISL+SGP' %}
+<ul>
+<li><a href="../risk/history.html">Historical Perspective</a></li>
+<li>
+<a href="https://ourworldindata.org/grapher/covid-daily-deaths-trajectory-per-million?country={{picks}}">
+Daily confirmed COVID-19 deaths per million by ourworldindata.org</a>
+</li>
+</ul>
+
+{% filter markdown %}
+Tuberculosis (TB) in the Keys:
+
+* 4 latent TB cases in 2018
+* 2.4 latent TB cases a year on average from 2014-2018
+* ~10% of latent TB cases move to (contagious) active TB
+* ~50% of active TB patients die
+{% endfilter %}
+
+<h4>Sources</h4>
+
+<ul>
+<li><a href="http://www.floridahealth.gov/diseases-and-conditions/tuberculosis/tb-statistics/index.html">
+  Florida State TB Trends and Statistics</a></li>
+<li><a href="http://www.floridahealth.gov/diseases-and-conditions/influenza/index.html">
+  Florida State Influenze Page</a></li>
+<li>
+<a href="https://www.who.int/news-room/fact-sheets/detail/tuberculosis">
+WHO TB Fact Sheet</a>
+<li><a href="https://en.wikipedia.org/wiki/Tuberculosis">Wikipedia</a></li>
+</li>
+</ul>
+
+{% endblock content %}
+

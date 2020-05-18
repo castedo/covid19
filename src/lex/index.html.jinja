@@ -1,0 +1,43 @@
+{% extends '_base.html.jinja' %}
+
+{% block more_head %}
+<style>
+div.news {
+  padding: 0.5rem;
+  background-color: #eee;
+  margin: 1rem;
+}
+span.date {
+  margin-right: 1rem;
+  font-weight: bold;
+}
+</style>
+{% endblock more_head %}
+
+
+{% block content %}
+
+<h2 style="text-align: center">Lexington</h2>
+
+{#
+<div class="news">
+<b>Note:</b> On April 12 there was a spike due to "increased testing capacity at
+our long term care facilities (LTCF) thanks to the help of the Massachusetts
+National Guard."
+</div>
+#}
+
+<p>
+For more analysis and less noisy data
+see <a href="../boston/">Core Boston Metro Area</a>
+or <a href="../middlesex/">Middlesex County</a>.
+</p>
+
+{{include_raw('_build/R/lex.html')}}
+
+<p>
+For more analysis and less noisy data <a href="../middlesex/">see Middlesex County</a>.
+</p>
+
+{% endblock content %}
+

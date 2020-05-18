@@ -1,0 +1,44 @@
+
+### How close is `r location` to [herd immunity](../hit.html)?
+
+% of population dead due to COVID
+<sup>
+ *
+</sup>
+<br>
+```{r, warning=FALSE, fig.height=6}
+geom_hit <- function(y, x, txt, linetype) {
+  c( geom_hline(yintercept = y, linetype=linetype, color='black'), 
+     annotate("text", x, y, vjust = 1.5, label = txt, hjust=0) )
+}
+autoplot(fracmort, facet=NULL) +
+  geom_hit(0.70*0.009, start(fracmort), 'pessimistic herd immunity death threshold', 'solid') +
+  geom_hit(0.60*0.004, start(fracmort), 'optimistic herd immunity death threshold', 'dashed') +
+  labs(x="Date", y="% dead of population", color="Region") +
+  scale_x_eow(fracmort) +
+  scale_y_continuous(labels=scales::percent_format(accuracy=0.1))
+```
+
+What is the [herd immunity death threshold](../hit.html)?
+
+<small>
+[ * What is counted as a death from COVID-19?](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
+</small>
+
+Estimates of (past) % of population infected:<br>
+```{r fig.height=3}
+x <- start(local)
+high <- lagz((local$deaths/0.004)/1e6, 14)
+low <- lagz((local$deaths/0.009)/1e6, 14)
+autoplot(cbind(high, low), facet=NULL) +
+  geom_hit(0.70, x, 'pessimistic herd immunity threshold', 'solid') +
+  geom_hit(0.60, x, 'optimistic herd immunity threshold', 'dashed') +
+  labs(x="Date", y="% of population", color="Estimates") +
+  scale_x_date(date_labels="%b %d",
+    breaks=seq(end(local), start(local), by=-7),
+    limits=c(start(local), end(local))) +
+  scale_y_continuous(labels=scales::percent_format())
+```
+
+Estimates are based on [infection fatality rate](../ifr.html).
+

@@ -1,0 +1,52 @@
+
+```{r}
+# source("data.R")
+# long.island <- zoo.nyt.micro(State=='New York' & County %in% c('Nassau','Suffolk'))
+# up.river <- zoo.nyt.micro(State=='New York' & County %in% c('Westchester','Rockland'))
+# nyc <- zoo.nyt.micro(State=='New York' & County=='New York City')
+# nys <- zoo.nyt.micro(State=='New York')
+# frac <- cbind(nyc$deaths, up.river$deaths, long.island$deaths, nys$deaths)/1e6
+# deaths <- frac[as.Date("2020-04-27"),]
+deaths <- structure(
+  c(0.00141175803822189, 0.0011072493128018, 0.00111168950335713, 0.000659825425209495),
+  .Dim = c(1L, 4L), .Dimnames = list(NULL, 
+    c("nyc", "up.river", "long.island", "nys")),
+  index = structure(18379, class = "Date"),
+  class = "zoo")
+antibody <- structure(
+  c(0.247, 0.151, 0.144, 0.149),
+  .Dim = c(1L, 4L), .Dimnames = list(NULL, 
+    c("nyc", "up.river", "long.island", "nys")),
+  index = structure(18379, class = "Date"),
+  class = "zoo")
+# deaths2 <- tail(frac,1)
+deaths2 <- c(0.00151213014130201, 0.00118766406736282, 0.00119709549059917, 0.000709666021103202)
+```
+
+```{r message=FALSE}
+source("data.R")
+long.island <- zoo.jhu.US.micro(State=='New York' & County %in% c('Nassau','Suffolk'))
+up.river <- zoo.jhu.US.micro(State=='New York' & County %in% c('Westchester','Rockland'))
+nyc <- zoo.jhu.US.micro(State=='New York' & County=='New York City')
+nys <- zoo.jhu.US.micro(State=='New York')
+frac <- cbind(nyc$deaths, up.river$deaths, long.island$deaths, nys$deaths)/1e6
+names(frac) <- c("nyc", "up.river", "long.island", "nys")
+deaths <- frac[as.Date("2020-04-27"),]
+deaths2 <- frac[as.Date("2020-05-01"),]
+```
+
+<div>Apr 27 preliminary seroprevalence results:</div>
+```{r results='asis'}
+kable(round(antibody, 4))
+```
+
+<div>(Apr 27 deaths) / (Apr 27 preliminary antibody results):</div>
+```{r results='asis'}
+kable(round(deaths/antibody, 4))
+```
+
+<div>(May 1 deaths)/ (Apr 27 preliminary antibody results):</div>
+```{r results='asis'}
+kable(round(deaths2/coredata(antibody), 4))
+```
+

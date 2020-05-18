@@ -1,0 +1,46 @@
+{% extends '_base.html.jinja' %}
+
+{% block more_head %}
+<style>
+main h2 { margin-bottom: 24px }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h2 style="text-align: center">
+  The Florida Keys
+  <small>(Monroe County)</small></h2>
+
+{% filter markdown %}
+
+[Monroe County](https://en.wikipedia.org/wiki/Monroe_County,_Florida)
+contains the [Florida Keys](https://en.wikipedia.org/wiki/Florida_Keys).
+More than 99% of the county population is in the Keys and not the mainland.
+The mainland part is virtually uninhabited
+[Everglades National Park](https://en.wikipedia.org/wiki/Everglades_National_Park).
+About one third of the county population is in Key West.
+
+The Keys are an interesting case for study due to their restriction of movement into
+the Keys during the 2020 pandemic.
+The [Overseas Highway](https://en.wikipedia.org/wiki/Overseas_Highway) is
+the only road into the Florida Keys.
+[24-hour checkpoints](https://www.monroecounty-fl.gov/1193/Checkpoint-Information)
+enforce a county order for the Keys to be closed to all tourists and leisure
+visitors.
+All tourism from cruise ships has ceased.
+
+The degree of restriction in movement is likely greater than every other locale
+in the US. The Keys are likely the closest any community in the continental US
+will get to
+[protective sequestration](https://en.wikipedia.org/wiki/Protective_sequestration)
+(or "reverse [cordon sanitaire](https://en.wikipedia.org/wiki/Cordon_sanitaire)").
+
+{% endfilter %}
+
+<p>
+<a href="./">Florida Keys COVID-19 data</a>
+</p>
+
+{% endblock content %}
+

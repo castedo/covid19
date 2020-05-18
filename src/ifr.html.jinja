@@ -1,0 +1,145 @@
+{% extends '_base.html.jinja' %}
+
+{% block more_head %}
+<style>
+table > thead > tr > th {
+  width: 8rem;
+}
+body table {
+  margin-bottom: 16px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h2>Bounds for infection fatality rate (IFR)</h2>
+
+<p>
+This website uses 0.4% and 0.9% as low and high estimates for IFR.
+</p>
+
+<p>
+Age-structure is an extremely important for IFR. The IFR for younger
+ages is significantly different than older ages. This is another
+reason to use low and high estimates rather than one single estimate.
+</p>
+
+<p>
+<a href="https://ourworldindata.org/coronavirus#deaths-from-covid-19-background">
+How deaths are counted</a> also makes a difference. Death counts on this website
+are based on "fast-and-easy" counts. Actual deaths due to the pandemic will
+likely be higher, maybe even double.
+</p>
+
+
+<h4>Some serosurvey results</h4>
+<dl>
+
+<dt>Geneva, Switzerland</dt>
+<dd>
+For all of Switzerland, stabalizing crude CFR of 5% to 6%.
+Confirmed cases Apr 1 to Apr 7 about 0.6% to 0.8% of Geneva population.
+Seroprevalence around Apr 21 is about 10%. Resulting implied IFR is about 0.3% to 0.5%.
+<a href="https://www.medrxiv.org/content/10.1101/2020.05.02.20088898v1.full">
+Repeated seroprevalence of anti-SARS-CoV-2 IgG antibodies in a population-based sample from Geneva, Switzerland</a>
+</dd>
+
+<dt>New York</dt>
+<dd>
+Rough estimates of infection to death ratio.
+Remember that there is 1 to 3 weeks delay between infection and death or
+antibodies triggering positive test results.
+
+{{include_raw('_build/R/ifr.html')}}
+
+From 
+<a href="https://newyork.cbslocal.com/wp-content/uploads/sites/14578484/2020/04/04.27.20-COVID19-Briefing-Deck.pdf">Preliminary New York seroprevalence results</a>.
+
+Finance professor estimates US IFR of 0.86% partly based on NYC serosurvey results:
+<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3590771">
+SARS-CoV-2, COVID-19, Infection Fatality Rate (IFR) Implied by the Serology, Antibody, Testing in New York City
+</a>.
+</dd>
+
+<dt>Santa Clara, CA</dt>
+<dd>
+Results are too noisy.
+High estimate is infections are 55x cases (for IFR of 0.17%) from
+2nd version of early study:
+<a href="https://www.medrxiv.org/content/10.1101/2020.04.14.20062463v2">
+COVID-19 Antibody Seroprevalence in Santa Clara County, California</a>
+Other analysis indicated an order of magnitude fewer infections in the county:
+<a href="https://www.medrxiv.org/content/10.1101/2020.04.24.20078824v1">
+Estimating COVID-19 Antibody Seroprevalence in Santa Clara County, California. A re-analysis of Bendavid et al.</a> and
+<a href="https://www.medrxiv.org/content/10.1101/2020.03.24.20043067v1">
+Estimation of SARS-CoV-2 Infection Prevalence in Santa Clara County</a>
+</dd>
+
+<dt>Iran</dt>
+<dd>
+Small (525 samples) serosurvey in April estimates 22% to 33% infected,
+with an implied IFR of 0.12% to 0.2% based on confirmed COVID-19 deaths.
+<a href="https://www.medrxiv.org/content/10.1101/2020.04.26.20079244v1">
+  Seroprevalence of COVID-19 virus infection in Guilan province, Iran</a>
+</dd>
+
+</dl>
+
+
+<h4>Some estimates WITHOUT serosurvey</h4>
+<dl>
+
+<dt>China</dt>
+<dd>
+Estimate of 0.66% IFR. Before serosurveys.
+<a href="https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30243-7/fulltext">
+Estimates of the severity of coronavirus disease 2019: a model-based analysis </a>
+</dd>
+
+<dt>USA</dt>
+<dd>
+Estimates for March 31 to April 7 in New York (8.5%), New Jersey (7.6%), and Louisiana (6.7%).
+12 population infections per diagnosed case.
+<a href="https://www.medrxiv.org/content/10.1101/2020.04.20.20072942v1">
+Estimating COVID-19 Prevalence in the United States: A Sample Selection Model Approach</a>
+</dd>
+
+<dt>Mexico/Iceland</dt>
+<dd>
+Estimates of 0.33% to 0.5% IFR for Mexico and Iceland respectively.
+<a href="https://www.medrxiv.org/content/10.1101/2020.04.23.20077446v1">
+On the estimation of the total number of SARS-CoV-2 infections</a>
+</dd>
+
+<dt>Italy Initial Outbreak</dt>
+<dd>
+  IFR of 1.29%.
+  <a href="https://www.medrxiv.org/content/10.1101/2020.04.18.20070912v1">
+  An empirical estimate of the infection fatality rate of COVID-19 from the first Italian outbreak</a>
+</dd>
+
+<dt>EU</dt>
+<dd>
+<a href="https://mrc-ide.github.io/covid19estimates/#/total-infected">
+Estimates by Imperial College London</a>
+based on dynamics of cases and deaths.
+</dd>
+
+</dl>
+
+<h3>More References</h3>
+<ul>
+<li>
+  <a href="https://www.medrxiv.org/content/10.1101/2020.04.22.20076026v1">
+  Strict Lower Bound on the COVID-19 Fatality Rate in Overwhelmed Healthcare Systems</a>
+</li>
+<li>
+  <a href="https://wwwnc.cdc.gov/eid/article/26/6/20-0320_article">
+  Case-Fatality Risk Estimates for COVID-19 Calculated by Using a Lag Time for Fatality</a>
+</li>
+
+</ul>
+
+{% endblock content %}
+

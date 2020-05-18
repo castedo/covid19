@@ -1,0 +1,83 @@
+
+```{r}
+source('retrogression.R')
+
+retroyear <- function(mcmorts) {
+  ifelse(mcmorts < pivot.mcmorts,
+         log(mcmorts/ref.mcmort)/log.slope,
+         2020 - pivot.year + (mcmorts-pivot.mcmorts)/linear.slope)
+}
+
+source("util.R")
+source("data.R")
+# knitr::opts_chunk$set(fig.height=12) 
+```
+
+```{r warning=FALSE, message=FALSE}
+#us <- weekly.deltas(zoo.jhu.global.micro('US'))
+wa.usa <- weekly.deltas(zoo.nyt.micro(State=='Washington'))
+ma.usa <- weekly.deltas(zoo.nyt.micro(State=='Massachusetts'))
+ca.usa <- weekly.deltas(zoo.nyt.micro(State=='California'))
+#ny.usa <- weekly.deltas(zoo.nyt.micro(State=='New York'))
+asof <- end(ma.usa)
+ny.usa <- weekly.deltas(window(zoo.jhu.US.micro(State=='New York'),end=asof))
+#sfc <- weekly.deltas(zoo.nyt.micro(State=='California' & County=='San Francisco'))
+belgium <- weekly.deltas(window(zoo.jhu.global.micro('Belgium'),end=asof))
+italy <- weekly.deltas(window(zoo.jhu.global.micro('Italy'),end=asof))
+spain <- weekly.deltas(window(zoo.jhu.global.micro('Spain'),end=asof))
+korea <- weekly.deltas(window(zoo.jhu.global.micro('Korea, South'),end=asof))
+japan <- weekly.deltas(window(zoo.jhu.global.micro('Japan'),end=asof))
+iran <- weekly.deltas(window(zoo.jhu.global.micro('Iran'),end=asof))
+#indonesia <- weekly.deltas(zoo.jhu.global.micro('Indonesia'))
+#singapore <- weekly.deltas(zoo.jhu.global.micro('Singapore'))
+#china  <- weekly.deltas(zoo.jhu.global.micro('China'))
+examples.2020 <- merge(
+#  US=us$deaths,
+  `MA, USA`=ma.usa$deaths,
+  `NY, USA`=ny.usa$deaths,
+  `WA, USA`=wa.usa$deaths,
+  `CA, USA`=ca.usa$deaths,
+#  `San Francisco`=sfc$deaths,
+  Belgium=belgium$deaths,
+  Italy=italy$deaths,
+  Spain=spain$deaths,
+  Iran=iran$deaths,
+  Japan=japan$deaths,
+  Korea=korea$deaths
+#  Singapore=singapore$deaths,
+#  China=china$deaths
+) + ref.mcmort/52
+```
+
+As an alternative to looking at
+[number of deaths per week](history.html)
+a [mathematical formula](retrogression-math.html)
+can convert weekly deaths per million into a more intuitive
+measure of:
+
+> *How many decades before 2020 must your retrogress to be living
+> hypothetically with similar risk of Pathogenic Pulmonary Disease?*
+
+The previous plots are redrawn below to this new scale of decades
+of risk retrogression.
+
+
+#### Decades (pre-2020) of risk retrogression, US historical (age-adjusted) vs 2020
+
+```{r warning=FALSE}
+top <- 20
+Historical <- z.mcmorts/52
+Historical[I(1918)] <- NA
+Trend <- zoo((160:0)/10, as.numeric(1860:2020))
+autoplot(merge(Trend, Historical=retroyear(Historical*52)/10),facet=NULL) +
+  scale_x_continuous(breaks=seq(1860,2020,by=20)) +
+  xlab("Year (1918 excluded)") +
+  ylab("Decades of Retrogression") +
+  scale_y_continuous(limits=c(0,top), breaks=seq(0,top, by=2))
+autoplot(retroyear(examples.2020*52)/10,facet=NULL) +
+  scale_y_continuous(limits=c(0,top), breaks=seq(0,top,by=2)) +
+  xlab("2020") +
+  ylab("Decades of Retrogression") +
+  geom_point()
+```
+

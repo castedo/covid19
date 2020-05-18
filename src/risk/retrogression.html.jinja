@@ -1,0 +1,31 @@
+{% extends '_base.html.jinja' %}
+{% set title = "Decades of Risk Retrogression by COVID-19" %}
+
+{% block more_head %}
+<style>
+blockquote p {
+  margin: 0;
+}
+blockquote {
+  border-left: 5px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h2>Decades of Risk Retrogression</h2>
+
+<p>
+Decades of risk retrogression is a way to answer the question "<a
+href="./">How dangerous is COVID-19?</a>"
+from a <a href="history.html">historical perspective</a>.
+
+<div style="clear:both"></div>
+{{include_raw('_build/R/risk.html')}}
+
+
+{% endblock content %}
+

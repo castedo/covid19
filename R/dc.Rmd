@@ -1,0 +1,69 @@
+```{r message=FALSE}
+source("util.R")
+source("data.R")
+location <- "Core DC Metro Area"
+pick <- c(
+  11001, # District of Columbia
+  24031, # Montgomery, Maryland
+  24033, # Prince George's, Maryland
+  51013, # Arlington, Virginia
+  51059, # Fairfax, Virginia
+  51510) # Alexandria, Virginia
+#local.data <- NYT.COUNTIES %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
+local.data <- JHU.US %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
+stopifnot(all(pick %in% local.data$FIPS))
+pop <- get.pop.US(FIPS %in% pick)
+local <- zoo.metrics(local.data)/pop*1e6
+local <- subset(local, confirmed > 0)
+```
+
+`r format(pop/1e6, digits=2)` million inhabitants of `r unique(local.data$County)` counties
+
+<div>Top three questions:</div>
+<ul>
+<li>Q1: Is an outbreak starting?</li>
+<li>Q2: How dangerous is it now?</li>
+<li>Q3: 
+  How close is `r location` to [herd immunity](../hit.html)?
+</li>
+</ul>
+
+```{r child="child/Q1.Rmd"}
+```
+
+```{r child="child/Q2.Rmd"}
+```
+
+```{r message=FALSE, warning=FALSE}
+US <- zoo.jhu.global.micro('US')$deaths
+#NYC <- zoo.nyt.micro(State=='New York' & County=='New York City')$deaths
+NYC <- zoo.jhu.US.micro(State=='New York' & County=='New York City')$deaths
+Lombardy.Italy <- window(read.ita.micromorts('03'), end=end(US))
+Sweden <- zoo.jhu.global.micro('Sweden')$deaths
+Belgium <- zoo.jhu.global.micro('Belgium')$deaths
+fracmort <- window(cbind(
+    local=local$deaths,
+    NYC, Lombardy.Italy, Belgium #, US, Sweden
+  )/1e6,
+  start="2020-03-15")
+names(fracmort)[which(names(fracmort)=='local')] <- location
+```
+
+```{r child="child/Q3.Rmd"}
+```
+
+#### Data Check
+
+<div>Per million:</div>
+```{r results='asis'}
+kable(tail(as.data.frame(local),3),
+      digits=1,
+      format="html", table.attr="class='kable'")
+```
+
+<div>Total:</div>
+```{r results='asis'}
+kable(tail(as.data.frame(local/1e6*pop),3),
+      format="html", table.attr="class='kable'")
+```
+
