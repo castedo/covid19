@@ -6,7 +6,7 @@
  *
 </sup>
 <br>
-```{r, warning=FALSE, fig.height=6}
+```{r, warning=FALSE, fig.width=9}
 geom_hit <- function(y, x, txt, linetype) {
   c( geom_hline(yintercept = y, linetype=linetype, color='black'), 
      annotate("text", x, y, vjust = 1.5, label = txt, hjust=0) )

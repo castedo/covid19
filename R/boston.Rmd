@@ -11,7 +11,7 @@ local.data <- NYT.COUNTIES %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
 # local.data <- JHU.US %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
 stopifnot(all(pick %in% local.data$FIPS))
 pop <- get.pop.US(FIPS %in% pick)
-local <- window(zoo.metrics(local.data)/pop*1e6, start="2020-03-01")
+local <- window(zoo.metrics(local.data)/pop*1e6, start="2020-03-15")
 ```
 
 `r format(pop/1e6, digits=2)` million inhabitants of `r unique(local.data$County)` counties
