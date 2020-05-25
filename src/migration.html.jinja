@@ -1,0 +1,38 @@
+{% extends '_base.html.jinja' %}
+
+{% block more_head %}
+<style>
+#mc_embed_signup {
+  display: none;
+}
+.table-title {
+  font-size: 1.25rem;
+}
+.plot-title {
+  font-size: 1.25rem;
+}
+.knit table {
+  margin-bottom: 24px;
+}
+.knit table tr {
+  padding: 2rem;
+}
+.knit table th, .knit table td {
+  padding-right: 2rem;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h1>Trip A</h1>
+<p>
+or <a href="migration-B.html">go to trip B</a>
+</p>
+
+<div class="knit">
+{{include_raw('_build/R/migration.html')}}
+</div>
+
+{% endblock content %}
+

@@ -4,13 +4,23 @@ suppressPackageStartupMessages({
 
 lagz <- zoo:::lag.zoo
 
+dzoo <- function(src, fun, ...) {
+  src %>%
+  group_by_at(vars(-Date, -Value)) %>%
+  do({
+    z <- fun(zoo(.$Value, .$Date), ...);
+    data.frame(Date=time(z), Value=coredata(z)) 
+  }) %>%
+  ungroup()
+}
+
 daily.deltas <- function(z) {
   diff(na.locf(z, xout=seq(start(z), end(z), by=1)))
 }
 
-weekly.deltas <- function(z) {
+weekly.deltas <- function(z, n=1) {
   z <- na.locf(z, xout=seq(start(z), end(z), by=1))
-  weekly <- z[seq(end(z), start(z), by=-7)]
+  weekly <- z[seq(end(z), start(z), by=-7*n)]/n
   return(c(head(weekly,1), diff(weekly)))
 }
 

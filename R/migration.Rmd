@@ -1,0 +1,9 @@
+```{r message=FALSE}
+knitr::opts_chunk$set(message=FALSE)
+trip.file <- "trip.csv"
+source('migration.R')
+```
+
+```{r child="child/migration.Rmd"}
+```
+
