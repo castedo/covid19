@@ -3,7 +3,8 @@ source("util.R")
 knitr::opts_chunk$set(fig.height=3, warning=FALSE)
 source("data.R")
 q <- quote(State=='Florida' & County=='Monroe')
-monroe <- zoo.nyt(eval(q))
+#monroe <- zoo.nyt(eval(q))
+monroe <- subset(zoo.jhu.US(eval(q)), confirmed > 0)
 pop <- get.pop.US(eval(q))
 ```
 
