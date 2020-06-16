@@ -1,8 +1,8 @@
 ```{r message=FALSE}
 knitr::opts_chunk$set(message=FALSE)
-trip.file <- "trip.csv"
+trip.file <- "trip-D.csv"
 source('migration.R')
-wnum <- 2
+wnum <- 1
 ```
 
 ```{r child="child/migration.Rmd"}

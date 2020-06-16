@@ -1,6 +1,6 @@
 ```{r message=FALSE}
 knitr::opts_chunk$set(message=FALSE)
-trip.file <- "trip.csv"
+trip.file <- "trip-C.csv"
 source('migration.R')
 wnum <- 2
 ```
