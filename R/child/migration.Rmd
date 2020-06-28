@@ -6,7 +6,7 @@
 
 <div class="plot-title">(Average) Weekly Cases Per Million (over `r wnum` weeks)</div>
 ```{r warning=FALSE, fig.width=9, fig.height=4}
-plot.trip(microcases %>% dzoo(weekly.deltas,wnum) %>% dzoo(tail,wnum)) +
+plot.trip(microcases %>% dzoo(weekly.deltas,wnum) %>% dzoo(tail,3)) +
   geom_path() +
   scale_y_continuous(limits=c(0,1600)) +
   labs(y="Weekly Cases Per Million")
@@ -14,7 +14,7 @@ plot.trip(microcases %>% dzoo(weekly.deltas,wnum) %>% dzoo(tail,wnum)) +
 
 <div class="plot-title">(Average) Weekly Deaths Per Million (over `r wnum` weeks)</div>
 ```{r warning=FALSE, fig.width=9, fig.height=4}
-plot.trip(microdeaths %>% dzoo(weekly.deltas,wnum) %>% dzoo(tail,wnum)) +
+plot.trip(microdeaths %>% dzoo(weekly.deltas,wnum) %>% dzoo(tail,3)) +
   geom_path() +
   geom_hline(aes(yintercept=y, color=txt), hist.ref) +
   labs(y="Weekly Deaths Per Million")
