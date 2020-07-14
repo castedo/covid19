@@ -9,7 +9,7 @@ New Covid deaths
 [ * ](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
 </sup>
 per week per million in `r location`<br>
-```{r fig.width=9}
+```{r fig.width=11}
 ref <- data.frame(
   y=c(3, 15, 35, 115, 180),
   txt=c("2010-2019", "1950-1951", "1940-1941", "1900-1901", "1865"))
