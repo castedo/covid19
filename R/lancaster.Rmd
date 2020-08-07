@@ -1,12 +1,8 @@
 ```{r message=FALSE}
 source("util.R")
 source("data.R")
-location <- "Core Boston Metro Area"
-pick <- c(
-  25021, # Norfolk
-  25009, # Essex
-  25025, # Suffolk
-  25017) # Middlesex
+location <- "Lancaster County, PA"
+pick <- 42071
 local.data <- NYT.COUNTIES %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
 # local.data <- JHU.US %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
 stopifnot(all(pick %in% local.data$FIPS))
@@ -24,8 +20,6 @@ local <- window(zoo.metrics(local.data)/pop*1e6, start="2020-03-15")
   How close is `r location` to [herd immunity](../hit.html)?
 </li>
 </ul>
-
-<a href="http://www.mwra.com/biobot/biobotdata.htm">Boston Area Wastewater COVID-19 Tracking</a>
 
 ```{r child="child/Q1.Rmd"}
 ```
