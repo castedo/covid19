@@ -69,9 +69,11 @@ ave.daily.change <- function(cummulative) {
 }
 scale_y_daily_change <- function() {
   breaks <- c(2^(-1/c(3, 7, 14))-1, 0, 2^(1/c(14, 7, 5, 3, 2))-1)
+  oob_censor_any = function(...) scales::censor(..., only.finite=FALSE)
   scale_y_continuous(labels=scales::percent_format(),
                      breaks=breaks,
                      limits=(2^(1/c(-3, 2))-1),
+                     oob=oob_censor_any,
                      sec.axis=sec_axis(trans='identity',
                                        breaks=breaks,
                                        labels=label_doubling_time,

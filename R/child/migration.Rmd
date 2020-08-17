@@ -8,7 +8,7 @@
 ```{r warning=FALSE, fig.width=9, fig.height=4}
 plot.trip(microcases %>% dzoo(weekly.deltas,wnum) %>% dzoo(tail,3)) +
   geom_path() +
-  scale_y_continuous(limits=c(0,1600)) +
+  scale_y_continuous(limits=c(0,4000)) +
   labs(y="Weekly Cases Per Million")
 ```
 
@@ -31,16 +31,16 @@ not specifically during any epidemic.
 ## Plots Across Time
 
 <div class="plot-title">(Average) Weekly Cases Per Million (every `r wnum` weeks)</div>
-```{r warning=FALSE, fig.height=5}
+```{r warning=FALSE, fig.width=15, fig.height=5}
 df <- microcases %>% dzoo(weekly.deltas,wnum) %>% dzoo(window,start="2020-03-01")
 plot.ts(df) +
   geom_path() +
-  scale_y_continuous(limits=c(0,3000)) +
+  scale_y_continuous(limits=c(0,4500)) +
   labs(x="Date", y="Weekly Cases Per Million")
 ```
 
 <div class="plot-title">(Average) Weekly Deaths Per Million (every `r wnum` weeks)</div>
-```{r warning=FALSE, fig.height=5}
+```{r warning=FALSE, fig.width=15, fig.height=5}
 df <- microdeaths %>% dzoo(weekly.deltas,wnum) %>% dzoo(window,start="2020-03-01")
 plot.ts(df) +
   geom_path() +

@@ -1,5 +1,17 @@
 {% extends '_base.html.jinja' %}
 
+{% block more_head %}
+{{super()}}
+<style>
+table.kable {
+  margin-bottom: 24px;
+}
+table.kable th {
+  width: 6rem;
+}
+</style>
+{% endblock more_head %}
+
 {% block content %}
 
 <h1>{{location}}</h1>

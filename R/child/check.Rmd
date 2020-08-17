@@ -1,0 +1,44 @@
+
+### Further Details
+
+New cases per week:<br>
+```{r, fig.width=13}
+autoplot.weekly.bar(weekly.deltas(local.num$confirmed))
+```
+
+New cases per day:<br>
+```{r, fig.width=13}
+autoplot(daily.deltas(local.num$confirmed), geom='blank') +
+  scale_x_eow(local.num) +
+  geom_col()
+```
+
+New deaths per week:<br>
+```{r, fig.width=13}
+autoplot.weekly.bar(weekly.deltas(local.num$deaths))
+```
+
+New deaths per day:<br>
+```{r, fig.width=13}
+autoplot(daily.deltas(local.num$deaths), geom='blank') +
+  scale_x_eow(local.num) +
+  geom_col()
+```
+
+#### Data check
+
+Population = `r format(pop, big.mark=',')`
+
+<div>Per million:</div>
+```{r results='asis'}
+kable(tail(as.data.frame(local),7),
+      digits=1,
+      format="html", table.attr="class='kable'")
+```
+
+<div>Total:</div>
+```{r results='asis'}
+kable(tail(as.data.frame(local/1e6*pop),7),
+      format="html", table.attr="class='kable'")
+```
+

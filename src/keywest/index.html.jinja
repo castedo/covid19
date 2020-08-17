@@ -1,7 +1,14 @@
 {% extends '_base.html.jinja' %}
 
 {% block more_head %}
+{{super()}}
 <style>
+table.kable {
+  margin-bottom: 24px;
+}
+table.kable th {
+  width: 6rem;
+}
 main h2 {
   text-align: center;
   margin-bottom: 16px;
@@ -17,15 +24,12 @@ main h4 {
 
 <h2>The Florida Keys <small>(Monroe County)</small></h2>
 
-<p>
-<a href="about.html">What makes the Keys an interesting case for study?</a>
-</p>
-
 <div>Top three questions:</div>
 <ul>
 <li>Q1: Is an outbreak starting?</li>
 <li>Q2: How dangerous is it now?</li>
-<li>Q3: Can the Keys "beat" coronavirus?</li>
+<li>Q3: Is coronavirus <a href="https://en.wikipedia.org/wiki/Endemic_(epidemiology)">endemic</a> yet?</li>
+{# <li>Q4: Can the Keys "beat" coronavirus?</li> #}
 </li>
 </ul>
 
@@ -49,7 +53,6 @@ Tuberculosis (TB) in the Keys:
 * 4 latent TB cases in 2018
 * 2.4 latent TB cases a year on average from 2014-2018
 * ~10% of latent TB cases move to (contagious) active TB
-* ~50% of active TB patients die
 {% endfilter %}
 
 <h4>Sources</h4>

@@ -10,9 +10,13 @@ knitr::opts_chunk$set(warning=FALSE)
 
 ```{r  message=FALSE}
 location <- "NYC"
-local <- zoo.jhu.US.micro(State=='New York' & County=='New York City')
-local <- subset(local, confirmed > 0)
-pop <- get.pop.US(State=='New York' & County=='New York City')
+q <- quote(State=='New York' & County=='New York City')
+local.data <- JHU.US %>% filter(eval(q)) %>% inner_join(US.POP)
+local.num <- window(zoo.metrics(local.data), start="2020-03-15")
+#local <- zoo.jhu.US.micro(State=='New York' & County=='New York City')
+#local <- subset(local, confirmed > 0)
+pop <- get.pop.US(eval(q))
+local <- local.num/pop*1e6
 NYC <- local$deaths
 #LongIsland.NY <- zoo.jhu.US.micro(State=='New York' & County %in% c('Nassau','Suffolk'))$deaths
 US <- zoo.jhu.global.micro('US')$deaths
@@ -20,11 +24,11 @@ Sweden <- zoo.jhu.global.micro('Sweden')$deaths
 Italy <- zoo.jhu.global.micro('Italy')$deaths
 Spain <- zoo.jhu.global.micro('Spain')$deaths
 Belgium <- zoo.jhu.global.micro('Belgium')$deaths
-Madrid.Comunidad <- read.esp.micromorts('MD')
+#Madrid.Comunidad <- read.esp.micromorts('MD')
 Lombardy.Italy <- read.ita.micromorts('03')
 fracmort <- window(cbind(US, NYC,
-                          Madrid.Comunidad, Lombardy.Italy,
-                          Sweden, Italy, Spain, Belgium)/1e6,
+                         Lombardy.Italy,
+                         Sweden, Italy, Spain, Belgium)/1e6,
                     start="2020-03-15")
 ```
 
@@ -48,18 +52,6 @@ fracmort <- window(cbind(US, NYC,
 ```{r child="child/Q3.Rmd"}
 ```
 
-#### Data Check
-
-Deaths per milion:
-```{r results='asis'}
-kable(tail(as.data.frame(NYC),3),
-      digits=1,
-      format="html", table.attr="class='kable'")
-```
-
-<div>Total:</div>
-```{r results='asis'}
-kable(tail(as.data.frame(local/1e6*pop),3),
-      format="html", table.attr="class='kable'")
+```{r child="child/check.Rmd"}
 ```
 

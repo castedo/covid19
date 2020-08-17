@@ -54,16 +54,6 @@ names(fracmort)[which(names(fracmort)=='local')] <- location
 
 #### Data Check
 
-<div>Per million:</div>
-```{r results='asis'}
-kable(tail(as.data.frame(local),3),
-      digits=1,
-      format="html", table.attr="class='kable'")
-```
-
-<div>Total:</div>
-```{r results='asis'}
-kable(tail(as.data.frame(local/1e6*pop),3),
-      format="html", table.attr="class='kable'")
+```{r child="child/check.Rmd"}
 ```
 

@@ -2,25 +2,19 @@
 source("util.R")
 knitr::opts_chunk$set(fig.height=3, warning=FALSE)
 source("data.R")
+location <- "Monroe"
 q <- quote(State=='Florida' & County=='Monroe')
 #monroe <- zoo.nyt(eval(q))
 monroe <- subset(zoo.jhu.US(eval(q)), confirmed > 0)
 pop <- get.pop.US(eval(q))
+local.data <- NYT.COUNTIES %>% filter(eval(q)) %>% inner_join(US.POP)
+# local.data <- JHU.US %>% filter(eval(q)) %>% inner_join(US.POP)
+local.num <- window(zoo.metrics(local.data), start="2020-03-15")
+local <- local.num/pop*1e6
 ```
 
-
-### Q1: Is an outbreak starting?
-
-Daily change in new cases (averaged over week):<br>
-```{r}
-autoplot(ave.daily.change(monroe$confirmed)) +
-  geom_point() +
-  geom_hline(yintercept = 0, linetype="dashed", color="grey") +
-  theme(panel.grid.minor = element_blank()) +
-  scale_x_eow(monroe$confirmed) +
-  scale_y_daily_change()
+```{r child="child/Q1.Rmd"}
 ```
-
 
 ### Q2: How dangerous is it now?
 
@@ -35,7 +29,7 @@ Covid deaths
 [ * ](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
 </sup>
 per week:<br>
-```{r}
+```{r, fig.width=11}
 autoplot.weekly.bar(weekly.deltas(monroe$deaths)) +
   scale_y_continuous(breaks=0:max(monroe$deaths))
 ```
@@ -46,16 +40,44 @@ See [a historical perspective](../risk/history.html) for a broad context.
 [ * What is counted as a death from COVID-19?](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
 </small>
 
-### Q3: Can the Keys "beat" coronavirus?
+### Q3: Is coronavirus <a href="https://en.wikipedia.org/wiki/Endemic_(epidemiology)">endemic</a> yet?
+
+% of population dead due to COVID
+<br>
+```{r, warning=FALSE, message=FALSE, fig.width=15}
+
+US <- zoo.jhu.global.micro('US')$deaths
+Middlesex <- zoo.jhu.US.micro(State=='Massachusetts' & County=='Middlesex')$deaths
+NYC <- zoo.jhu.US.micro(State=='New York' & County=='New York City')$deaths
+Lombardy.Italy <- read.ita.micromorts('03')
+Sweden <- zoo.jhu.global.micro('Sweden')$deaths
+Belgium <- zoo.jhu.global.micro('Belgium')$deaths
+fracmort <- window(cbind(US, NYC, Lombardy.Italy, Middlesex, Belgium, Sweden)/1e6,
+               start="2020-03-15")
+fracmort <- merge(local=local$deaths/1e6, fracmort)
+names(fracmort)[which(names(fracmort)=='local')] <- location
+
+autoplot(fracmort, facet=NULL) +
+  labs(x="Date", y="% dead of population", color="Region") +
+  scale_x_eow(fracmort) +
+  scale_y_continuous(limits=c(0,0.003), labels=scales::percent_format(accuracy=0.1))
+```
+
+<!--
+### Q4: Can the Keys "beat" coronavirus?
+
+**Answer: Apparently not.**
+
+<a href="about.html">What makes the Keys an interesting case for study?</a>
 
 Weekly covid deaths
 <sup>
 [ * ](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
 </sup>
-per million of "winning" counties<br>
-compared with<br>
+per million of "winning" counties
+compared with
 2% and 1% of Keys cases per million:<br>
-```{r message=FALSE, fig.height=6}
+```{r message=FALSE, fig.width=13, fig.height=6}
 asof <- end(monroe)
 weekly.deaths <- function(country) {
   weekly.deltas(window(zoo.jhu.global.micro(country),end=asof))$deaths
@@ -67,7 +89,7 @@ winners <- window(merge(
   `1% Keys cases`= 0.01*monroe.micro,
   `Trinidad&Tobago`=weekly.deaths('Trinidad and Tobago'),
   `New Zealand`=weekly.deaths('New Zealand'),
-  `Australia`=weekly.deaths('Australia'),
+#  `Australia`=weekly.deaths('Australia'),
   Singapore=weekly.deaths('Singapore'),
   Japan=weekly.deaths('Japan'),
   Korea=weekly.deaths('Korea, South'),
@@ -79,27 +101,9 @@ autoplot(winners, facet=NULL) +
   xlab("2020") +
   ylab("Weekly COVID Deaths Per Million")
 ```
-
-### Further Details
-
-New cases per week:<br>
-```{r}
-autoplot.weekly.bar(weekly.deltas(monroe$confirmed))
-```
-
-New cases per day:<br>
-```{r}
-autoplot(daily.deltas(monroe$confirmed), geom='blank') +
-  scale_x_eow(monroe$confirmed) +
-  geom_col()
-```
+-->
 
 
-#### Data check
-
-County population = `r format(pop, big.mark=',')`
-
-```{r results='asis'}
-kable(tail(as.data.frame(monroe),3))
+```{r child="child/check.Rmd"}
 ```
 

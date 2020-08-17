@@ -1,11 +1,4 @@
-{% extends '_base.html.jinja' %}
-
-{% block content %}
-
-<h1>Core Boston Metro Area</h1>
-
-{{include_raw('_build/R/boston.html')}}
-
-{% endblock content %}
-
+{% extends '_topq.html.jinja' %}
+{% set location = 'Core Boston Metro Area' %}
+{% set Rfile = 'boston' %}
 
