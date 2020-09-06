@@ -11,12 +11,8 @@ historical <- merge(Trend, Actual)
 
 #### Weekly deaths per million, US historical (age-adjusted) vs 2020
 
-```{r warning=FALSE, message=FALSE}
-#nyc <- weekly.deltas(
-#  subset(zoo.nyt(State=='New York' & County=='New York City'), confirmed > 0)
-#)/8.398748
-
-top <- 260
+```{r warning=FALSE, message=FALSE, fig.width=5}
+top <- 300
 autoplot(historical, facets=NULL) +
   scale_y_continuous(limits=c(0,top)) +
   scale_x_continuous(breaks=seq(1860,2020,by=20)) +
@@ -26,19 +22,18 @@ autoplot(historical, facets=NULL) +
 wa.usa <- weekly.deltas(zoo.nyt.micro(State=='Washington'))
 ma.usa <- weekly.deltas(zoo.nyt.micro(State=='Massachusetts'))
 ca.usa <- weekly.deltas(zoo.nyt.micro(State=='California'))
-# ny.usa <- weekly.deltas(zoo.nyt.micro(State=='New York'))
 asof <- end(ma.usa)
 ny.usa <- weekly.deltas(window(zoo.jhu.US.micro(State=='New York'),end=asof))
 belgium <- weekly.deltas(window(zoo.jhu.global.micro('Belgium'),end=asof))
 italy <- weekly.deltas(window(zoo.jhu.global.micro('Italy'),end=asof))
 spain <- weekly.deltas(window(zoo.jhu.global.micro('Spain'),end=asof))
 iran <- weekly.deltas(window(zoo.jhu.global.micro('Iran'),end=asof))
-
+```
+```{r warning=FALSE, message=FALSE, fig.width=15}
 losers <- window(merge(
   `MA, USA`=ma.usa$deaths,
   `NY, USA`=ny.usa$deaths,
   Belgium=belgium$deaths,
-#  `New York City`=nyc$deaths,
   `WA, USA`=wa.usa$deaths,
   `CA, USA`=ca.usa$deaths,
   Spain=spain$deaths,
@@ -53,7 +48,7 @@ autoplot(losers, facet=NULL) +
   ylab("Weekly COVID Deaths Per Million")
 ```
 
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, fig.width=5}
 top <- 5
 autoplot(window(historical,start=2000), facets=NULL) +
   scale_y_continuous(limits=c(0,top)) +
@@ -63,7 +58,8 @@ autoplot(window(historical,start=2000), facets=NULL) +
 weekly.new.deaths.country <- function(country) {
   weekly.deltas(window(zoo.jhu.global.micro(country),end=asof))$deaths
 }
-
+```
+```{r warning=FALSE, message=FALSE, fig.width=15}
 winners <- window(merge(
 #  `Iceland`=weekly.new.deaths.country('Iceland'),
   `New Zealand`=weekly.new.deaths.country('New Zealand'),

@@ -387,12 +387,13 @@ get.pop.US <- function(...) {
 }
 
 fav.fracmort <- function() {
-  US <- zoo.jhu.global.micro('US')$deaths
+  #US <- zoo.jhu.global.micro('US')$deaths
   NYC <- zoo.jhu.US.micro(FIPS %in% NYC.FIPS)$deaths
+  LongIsland.NY <- zoo.jhu.US.micro(FIPS %in% c(36059, 36103))$deaths
   Lombardy.Italy <- read.ita.micromorts('03')
   #Madrid.Comunidad <- read.esp.micromorts('MD')
   Sweden <- zoo.jhu.global.micro('Sweden')$deaths
   Belgium <- zoo.jhu.global.micro('Belgium')$deaths
-  window(cbind(US, NYC, Lombardy.Italy, Sweden, Belgium)/1e6, start="2020-03-15")
+  window(cbind(NYC, Lombardy.Italy, LongIsland.NY, Belgium, Sweden)/1e6, start="2020-03-15")
 }
 

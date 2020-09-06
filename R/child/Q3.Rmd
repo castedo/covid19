@@ -1,5 +1,5 @@
 
-### How close is `r location` to [herd immunity](../hit.html)?
+### Q3: How close is `r location` to [herd immunity](../hit.html)?
 
 % of population dead due to COVID
 <sup>
