@@ -1,13 +1,10 @@
 ```{r  message=FALSE}
 source("util.R")
 source("data.R")
-location <- "NYC"
+location <- "LongIsland"
 pick <- c(
-  36005, # Bronx
-  36047, # Kings (Brooklyn)
-  36061, # New York
-  36081, # Queens
-  36085) # Richmond (Staten Island)
+  36059, # Nassau
+  36103) # Suffolk
 # local.data <- NYT.COUNTIES %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
 local.data <- JHU.US %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
 stopifnot(all(pick %in% local.data$FIPS))
@@ -34,7 +31,8 @@ local <- local.num/pop*1e6
 ```
 
 ```{r  warning=FALSE, message=FALSE}
-fracmort <- fav.fracmort()
+fracmort <- merge(fav.fracmort(), local=local$deaths/1e6)
+names(fracmort)[which(names(fracmort)=='local')] <- location
 ```
 
 ```{r child="child/Q3.Rmd"}
