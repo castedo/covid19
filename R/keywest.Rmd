@@ -7,8 +7,8 @@ q <- quote(State=='Florida' & County=='Monroe')
 #monroe <- zoo.nyt(eval(q))
 monroe <- subset(zoo.jhu.US(eval(q)), confirmed > 0)
 pop <- get.pop.US(eval(q))
-local.data <- NYT.COUNTIES %>% filter(eval(q)) %>% inner_join(US.POP)
-# local.data <- JHU.US %>% filter(eval(q)) %>% inner_join(US.POP)
+# local.data <- NYT.COUNTIES %>% filter(eval(q)) %>% inner_join(US.POP)
+local.data <- JHU.US %>% filter(eval(q)) %>% inner_join(US.POP)
 local.num <- window(zoo.metrics(local.data), start="2020-03-15")
 local <- local.num/pop*1e6
 ```
@@ -44,17 +44,9 @@ See [a historical perspective](../risk/history.html) for a broad context.
 
 % of population dead due to COVID
 <br>
-```{r, warning=FALSE, message=FALSE, fig.width=15}
-
-US <- zoo.jhu.global.micro('US')$deaths
-Middlesex <- zoo.jhu.US.micro(State=='Massachusetts' & County=='Middlesex')$deaths
-NYC <- zoo.jhu.US.micro(State=='New York' & County=='New York City')$deaths
-Lombardy.Italy <- read.ita.micromorts('03')
-Sweden <- zoo.jhu.global.micro('Sweden')$deaths
-Belgium <- zoo.jhu.global.micro('Belgium')$deaths
-fracmort <- window(cbind(US, NYC, Lombardy.Italy, Middlesex, Belgium, Sweden)/1e6,
-               start="2020-03-15")
-fracmort <- merge(local=local$deaths/1e6, fracmort)
+```{r, warning=FALSE, message=FALSE, fig.width=15, fig.height=4}
+Middlesex <- zoo.jhu.US.micro(State=='Massachusetts' & County=='Middlesex')$deaths/1e6
+fracmort <- merge(local=local$deaths/1e6, fav.fracmort(), Middlesex)
 names(fracmort)[which(names(fracmort)=='local')] <- location
 
 autoplot(fracmort, facet=NULL) +

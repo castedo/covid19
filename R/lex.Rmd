@@ -6,7 +6,7 @@ pop <- 33792
 lex <- fread("../src/lex/lexington-cases.csv")
 lex <- tail(lex, -1)
 lex <- zoo(lex$Cases, as.Date(lex$Date))
-knitr::opts_chunk$set(fig.height=3, warning=FALSE) 
+knitr::opts_chunk$set(fig.width=13, fig.height=3, warning=FALSE)
 ```
 
 **As of `r format(end(lex), "%a %b %d")`:**

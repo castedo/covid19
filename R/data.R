@@ -6,6 +6,13 @@ suppressPackageStartupMessages({
   library(zoo)
 })
 
+NYC.FIPS <- c(
+  36005, # Bronx
+  36047, # Kings (Brooklyn)
+  36061, # New York
+  36081, # Queens
+  36085) # Richmond (Staten Island)
+
 zoo.metrics <- function(src) {
   df <- src %>%
     group_by(Date, Metric) %>%
@@ -216,10 +223,7 @@ read.jhu.US.file <- function(metric_name, dirpath=jhu.dirpath) {
 }
 
 read.jhu.US <- function(dirpath=jhu.dirpath) {
-  ret <- rbind(read.jhu.US.file('deaths'), read.jhu.US.file('confirmed'))
-  q <- with(ret, State=='New York' & County=='New York')
-  ret[q, 'County'] <- 'New York City'
-  ret
+  rbind(read.jhu.US.file('deaths'), read.jhu.US.file('confirmed'))
 }
 
 delayedAssign("JHU.US", read.jhu.US())
@@ -373,9 +377,6 @@ read.jhu.pop.US <- function(dirpath=jhu.dirpath) {
     rename(County=Admin2,
            State=Province_State) %>%
     select(FIPS, County, State, Combined_Key, Population)
-  q <- with(ret, State=='New York' & County=='New York')
-  ret[q, 'Population'] <- 8398748
-  ret[q, 'County'] <- 'New York City'
   ret
 }
 
@@ -383,5 +384,15 @@ delayedAssign("US.POP", read.jhu.pop.US())
 
 get.pop.US <- function(...) {
   as.numeric(US.POP %>% filter(...) %>% summarise_at('Population', sum))
+}
+
+fav.fracmort <- function() {
+  US <- zoo.jhu.global.micro('US')$deaths
+  NYC <- zoo.jhu.US.micro(FIPS %in% NYC.FIPS)$deaths
+  Lombardy.Italy <- read.ita.micromorts('03')
+  #Madrid.Comunidad <- read.esp.micromorts('MD')
+  Sweden <- zoo.jhu.global.micro('Sweden')$deaths
+  Belgium <- zoo.jhu.global.micro('Belgium')$deaths
+  window(cbind(US, NYC, Lombardy.Italy, Sweden, Belgium)/1e6, start="2020-03-15")
 }
 

@@ -59,3 +59,10 @@ span.smallcaps{font-variant: small-caps;}
 span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 
+table.kable {
+  margin-bottom: 24px;
+}
+table.kable th {
+  min-width: 6rem;
+}
+

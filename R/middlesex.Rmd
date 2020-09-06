@@ -1,92 +1,48 @@
-
 ```{r}
 source("util.R")
 source("data.R")
-suppressPackageStartupMessages({
-  library(scales)
-})
-knitr::opts_chunk$set(fig.height=3, warning=FALSE) 
+location <- "Middlesex County, MA"
+pick <- 25017
 ```
 
 ```{r message=FALSE}
-pop <- get.pop.US(State=='Massachusetts' & County=='Middlesex')
-location <- "Middlesex County, MA"
-local <- zoo.nyt.micro(State=='Massachusetts' & County=='Middlesex')
-middlesex <- zoo.jhu.US(State=='Massachusetts' & County=='Middlesex')
-middlesex <- subset(middlesex, confirmed > 0)
-middlesex.cases <- middlesex$confirmed
+# local.data <- NYT.COUNTIES %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
+local.data <- JHU.US %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
+stopifnot(all(pick %in% local.data$FIPS))
+pop <- get.pop.US(FIPS %in% pick)
+local.num <- window(zoo.metrics(local.data), start="2020-03-15")
+local <- local.num/pop*1e6
 ```
 
-```{r}
-source("load.nyt.data.R")
-nyt <- ( covid[ Reg2 == 'Massachusetts' & Reg3 == 'Middlesex'] )
-#middlesex.cases <- with(nyt[What=='Confirmed Cases'], zoo(Count, as.Date(Day)))
-middlesex.deaths <- with(nyt[What=='Fatalities'], zoo(Count, as.Date(Day)))
+`r format(pop/1e6, digits=2)` million inhabitants of `r unique(local.data$County)` counties
+
+<div>Top three questions:</div>
+<ul>
+<li>Q1: Is an outbreak starting?</li>
+<li>Q2: How dangerous is it now?</li>
+<li>Q3: 
+  How close is `r location` to [herd immunity](../hit.html)?
+</li>
+</ul>
+
+<a href="http://www.mwra.com/biobot/biobotdata.htm">Boston Area Wastewater COVID-19 Tracking</a>
+
+```{r child="child/Q1.Rmd"}
 ```
-
-### Q1: Is an outbreak starting?
-
-Daily change in new cases (averaged over week):<br>
-```{r}
-autoplot(ave.daily.change(middlesex.cases)) +
-  geom_point() +
-  geom_hline(yintercept = 0, linetype="dashed", color="grey") +
-  theme(panel.grid.minor = element_blank()) +
-  scale_x_eow(middlesex.cases) +
-  scale_y_daily_change()
-```
-
-Advanced estimates of state level change can be found at
-[epiforecasts.io](https://epiforecasts.io/covid/posts/national/united-states/).
-
 
 ```{r child="child/Q2.Rmd"}
 ```
 
-
 ```{r message=FALSE, warning=FALSE}
-US <- zoo.jhu.global.micro('US')$deaths
-#NYC <- zoo.nyt.micro(State=='New York' & County=='New York City')$deaths
-NYC <- zoo.jhu.US.micro(State=='New York' & County=='New York City')$deaths
-Lombardy.Italy <- read.ita.micromorts('03')
-Sweden <- zoo.jhu.global.micro('Sweden')$deaths
-Belgium <- zoo.jhu.global.micro('Belgium')$deaths
-fracmort <- window(cbind(US, NYC, Lombardy.Italy, Sweden, Belgium)/1e6,
-               start="2020-03-15")
-fracmort <- merge(fracmort, local=local$deaths/1e6)
+fracmort <- merge(fav.fracmort(), local=local$deaths/1e6)
 names(fracmort)[which(names(fracmort)=='local')] <- location
 ```
 
 ```{r child="child/Q3.Rmd"}
 ```
 
-<hr>
-
-### Data Detail
-
-New cases per week:<br>
-```{r}
-autoplot.weekly.bar(weekly.deltas(middlesex.cases))
-```
-
-New cases per day:<br>
-```{r}
-autoplot(daily.deltas(middlesex.cases), geom='blank') +
-  scale_x_eow(middlesex.cases) +
-  geom_col()
-```
-
-New deaths per day:<br>
-```{r}
-autoplot(daily.deltas(middlesex.deaths), geom='blank') +
-  scale_x_eow(middlesex.deaths) +
-  geom_col()
-```
-
-
 #### Data Check
 
-```{r results='asis'}
-kable(tail(as.data.frame(cbind(middlesex.cases, middlesex.deaths))))
+```{r child="child/check.Rmd"}
 ```
 

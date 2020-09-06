@@ -1,38 +1,23 @@
-
-```{r}
+```{r  message=FALSE}
 source("util.R")
 source("data.R")
-suppressPackageStartupMessages({
-  library(scales)
-})
-knitr::opts_chunk$set(warning=FALSE) 
-```
-
-```{r  message=FALSE}
 location <- "NYC"
-q <- quote(State=='New York' & County=='New York City')
-local.data <- JHU.US %>% filter(eval(q)) %>% inner_join(US.POP)
+pick <- c(
+  36005, # Bronx
+  36047, # Kings (Brooklyn)
+  36061, # New York
+  36081, # Queens
+  36085) # Richmond (Staten Island)
+# local.data <- NYT.COUNTIES %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
+local.data <- JHU.US %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
+stopifnot(all(pick %in% local.data$FIPS))
+pop <- get.pop.US(FIPS %in% pick)
 local.num <- window(zoo.metrics(local.data), start="2020-03-15")
-#local <- zoo.jhu.US.micro(State=='New York' & County=='New York City')
-#local <- subset(local, confirmed > 0)
-pop <- get.pop.US(eval(q))
 local <- local.num/pop*1e6
-NYC <- local$deaths
-#LongIsland.NY <- zoo.jhu.US.micro(State=='New York' & County %in% c('Nassau','Suffolk'))$deaths
-US <- zoo.jhu.global.micro('US')$deaths
-Sweden <- zoo.jhu.global.micro('Sweden')$deaths
-Italy <- zoo.jhu.global.micro('Italy')$deaths
-Spain <- zoo.jhu.global.micro('Spain')$deaths
-Belgium <- zoo.jhu.global.micro('Belgium')$deaths
-#Madrid.Comunidad <- read.esp.micromorts('MD')
-Lombardy.Italy <- read.ita.micromorts('03')
-fracmort <- window(cbind(US, NYC,
-                         Lombardy.Italy,
-                         Sweden, Italy, Spain, Belgium)/1e6,
-                    start="2020-03-15")
+# LongIsland.NY <- zoo.jhu.US.micro(State=='New York' & County %in% c('Nassau','Suffolk'))$deaths
 ```
 
-`r format(pop/1e6, digits=2)` million inhabitants
+`r format(pop/1e6, digits=2)` million inhabitants of `r unique(local.data$County)` counties
 
 <div>Top three questions:</div>
 <ul>
@@ -49,8 +34,14 @@ fracmort <- window(cbind(US, NYC,
 ```{r child="child/Q2.Rmd"}
 ```
 
+```{r  warning=FALSE, message=FALSE}
+fracmort <- fav.fracmort()
+```
+
 ```{r child="child/Q3.Rmd"}
 ```
+
+#### Data Check
 
 ```{r child="child/check.Rmd"}
 ```
