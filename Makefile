@@ -10,6 +10,8 @@ endif
 .PHONY : all site Rmarkdown push clean
 
 ALLDATA = \
+  data/datos_ccaas.csv \
+  data/datos_provincias.csv \
   NYT_data/us-counties.csv \
   JHU_data/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv \
   JHU_data/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv \
@@ -30,6 +32,12 @@ Rmarkdown: $(patsubst %,src/_build/R/%.html,$(RMDS))
 site: Rmarkdown
 	rsync -rt --copy-links --exclude='*.jinja' --exclude='.*' --exclude='_*' src/ $(DEST)
 	jinjagen -m jinjagenadd:$(FLAGS) --root src/  $(DEST)
+
+# https://cnecovid.isciii.es/covid19/#documentaci%C3%B3n-y-datos
+data/datos_ccaas.csv:
+	cd data && curl -O https://cnecovid.isciii.es/covid19/resources/datos_ccaas.csv
+data/datos_provincias.csv:
+	cd data && curl -O https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv
 
 data/agregados.csv:
 	cd data && curl -O https://cnecovid.isciii.es/covid19/resources/agregados.csv

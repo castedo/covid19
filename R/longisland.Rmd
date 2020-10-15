@@ -31,8 +31,7 @@ local <- local.num/pop*1e6
 ```
 
 ```{r  warning=FALSE, message=FALSE}
-fracmort <- merge(fav.fracmort(), local=local$deaths/1e6)
-names(fracmort)[which(names(fracmort)=='local')] <- location
+fracmort <- fav.fracmort()
 ```
 
 ```{r child="child/Q3.Rmd"}
