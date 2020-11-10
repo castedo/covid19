@@ -12,7 +12,6 @@ endif
 ALLDATA = \
   data/datos_ccaas.csv \
   data/datos_provincias.csv \
-  NYT_data/us-counties.csv \
   JHU_data/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv \
   JHU_data/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv \
   JHU_data/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv \
@@ -58,12 +57,10 @@ src/_build/R/. :
 
 clone :
 	git clone git@github.com:CSSEGISandData/COVID-19.git JHU_data
-	git clone git@github.com:nytimes/covid-19-data.git NYT_data
 	git clone git@github.com:pcm-dpc/COVID-19.git ITA_data
 
 pull :
 	cd JHU_data && git pull
-	cd NYT_data && git pull
 	cd ITA_data && git pull
 
 push :

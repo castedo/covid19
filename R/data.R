@@ -160,53 +160,6 @@ read.ita.micromorts <- function(code) {
   read.ita.region() %>% filter(Code==code & Metric=='deaths') %>% with(zoo(Value/pop*1e6, Date))
 }
 
-
-read.nyt.states <- function(dirpath) {
-  df <- read_csv(paste(dirpath, "us-states.csv", sep='/'))
-  df %>%
-    rename(Date=date,
-           State=state,
-           FIPS=fips,
-           confirmed=cases
-           ) %>%
-    mutate(FIPS=as.numeric(FIPS)) %>%
-    pivot_longer(c(confirmed, deaths), names_to="Metric", values_to="Value")
-}
-
-read.nyt.counties <- function(dirpath) {
-  df <- read_csv(paste(dirpath, "us-counties.csv", sep='/'))
-  ret <- df %>%
-    rename(Date=date,
-           State=state,
-           County=county,
-           FIPS=fips,
-           confirmed=cases
-           ) %>%
-    mutate(FIPS=as.numeric(FIPS)) %>%
-    pivot_longer(c(confirmed, deaths), names_to="Metric", values_to="Value")
-  q <- with(ret, State=='Virginia' & County=='Alexandria city')
-  ret[q, 'County'] <- 'Alexandria'
-  ret
-}
-
-nyt.dirpath <- "../NYT_data/"
-delayedAssign("NYT.COUNTIES", read.nyt.counties(nyt.dirpath))
-delayedAssign("NYT.STATES", read.nyt.states(nyt.dirpath))
-
-zoo.nyt <- function(...) {
-  df <- NYT.COUNTIES %>%
-    filter(...) %>%
-    group_by(Date, Metric) %>%
-    summarise_at(vars(Value), sum) %>%
-    ungroup() %>%
-    pivot_wider(names_from=Metric, values_from=Value)
-  zoo( select(df,-c(Date)), df$Date )
-}
-
-zoo.nyt.micro <- function(...) {
-  zoo.nyt(...)/get.pop.US(...)*1e6
-}
-
 jhu.dirpath <- "../JHU_data/csse_covid_19_data/csse_covid_19_time_series/"
 
 read.jhu.US.file <- function(metric_name, dirpath=jhu.dirpath) {

@@ -1,8 +1,7 @@
 
 ### Q2: How dangerous is it now?
 
-The following numbers evaluate "danger #2" in
-<a href="../risk/two-dangers.html">this split of covid danger</a>.
+See [a historical perspective](../risk/history.html) for broader context.
 
 New Covid deaths
 <sup>
@@ -18,8 +17,6 @@ autoplot.weekly.bar(weekly.deltas(local$deaths)) +
   labs(x="Date", y="Weekly Deaths Per Million",
        color="Reference\nAverage\nFlu/Pneumonia/TB**")
 ```
-
-See [a historical perspective](../risk/history.html) for a broad context.
 
 <small>
 [ * What is counted as a death from COVID-19?](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)

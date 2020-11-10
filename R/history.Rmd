@@ -19,9 +19,9 @@ autoplot(historical, facets=NULL) +
   xlab("Year (1918 excluded)") +
   ylab("Average US Weekly PPD Deaths Per Million")
 
-wa.usa <- weekly.deltas(zoo.nyt.micro(State=='Washington'))
-ma.usa <- weekly.deltas(zoo.nyt.micro(State=='Massachusetts'))
-ca.usa <- weekly.deltas(zoo.nyt.micro(State=='California'))
+wa.usa <- weekly.deltas(zoo.jhu.US.micro(State=='Washington'))
+ma.usa <- weekly.deltas(zoo.jhu.US.micro(State=='Massachusetts'))
+ca.usa <- weekly.deltas(zoo.jhu.US.micro(State=='California'))
 asof <- end(ma.usa)
 ny.usa <- weekly.deltas(window(zoo.jhu.US.micro(State=='New York'),end=asof))
 belgium <- weekly.deltas(window(zoo.jhu.global.micro('Belgium'),end=asof))

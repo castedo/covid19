@@ -6,11 +6,10 @@ pick <- 42071
 ```
 
 ```{r message=FALSE}
-local.data <- NYT.COUNTIES %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
-# local.data <- JHU.US %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
+local.data <- JHU.US %>% filter(FIPS %in% pick) %>% inner_join(US.POP)
 stopifnot(all(pick %in% local.data$FIPS))
 pop <- get.pop.US(FIPS %in% pick)
-local.num <- window(zoo.metrics(local.data), start="2020-03-15")
+local.num <- window(zoo.metrics(local.data), start="2020-03-21")
 local <- local.num/pop*1e6
 ```
 

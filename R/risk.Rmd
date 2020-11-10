@@ -15,9 +15,9 @@ source("data.R")
 
 ```{r warning=FALSE, message=FALSE}
 #us <- weekly.deltas(zoo.jhu.global.micro('US'))
-wa.usa <- weekly.deltas(zoo.nyt.micro(State=='Washington'))
-ma.usa <- weekly.deltas(zoo.nyt.micro(State=='Massachusetts'))
-ca.usa <- weekly.deltas(zoo.nyt.micro(State=='California'))
+wa.usa <- weekly.deltas(zoo.jhu.US.micro(State=='Washington'))
+ma.usa <- weekly.deltas(zoo.jhu.US.micro(State=='Massachusetts'))
+ca.usa <- weekly.deltas(zoo.jhu.US.micro(State=='California'))
 #ny.usa <- weekly.deltas(zoo.nyt.micro(State=='New York'))
 asof <- end(ma.usa)
 ny.usa <- weekly.deltas(window(zoo.jhu.US.micro(State=='New York'),end=asof))
