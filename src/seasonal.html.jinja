@@ -1,0 +1,98 @@
+{% extends '_base.html.jinja' %}
+
+{% block more_head %}
+<style>
+h2 {
+  margin-top: 24px;
+}
+iframe {
+  margin-bottom: 24px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h2>Risk of COVID-19 infection higher this fall/winter than summer</h2>
+<small>Nov 9, 2020</small>
+<hr>
+
+{% filter markdown %}
+
+By "risk of infection" I mean catching COVID-19 from any of your contacts (who
+catch it from their contacts, etc... in your community).
+
+Depending on where you are, there might already be higher transmission now
+than this summer, or even spring. If this hasn't happened already, prepare
+yourself for it. There is strong evidence that COVID-19
+(SARS-CoV-2) transmission is under seasonal influence in non-tropical climates.
+If your locale does not have a fall/winter wave count yourself lucky.
+
+For guidance on Thanksgiving plans, I defer to <a
+href="https://www.cdc.gov/coronavirus/2019-ncov/daily-life-coping/holidays.html">CDC
+recommendations</a>.
+
+
+<h3>Seasonal Effect on Coronavirus Transmission</h3>
+
+There is a seasonal effect on the transmission of the already endemic
+coronaviruses (these strains are not lethal). Figure 1 from the study
+<a href="https://smw.ch/article/doi/smw.2020.20224">Potential impact of
+seasonal forcing on a SARS-CoV-2 pandemic</a> sums it up very well:
+
+<div style="text-align:center"><b>Positive tests for already endemic coronaviruses ("CoVs") in Stockholm, Sweden.</b></div>
+<img src="https://smw.ch/journalimage/1200/1200/ratio/view/article/ezm_smw/en/smw.2020.20224/c1ef84064e77736bc19423fd99ab1bc2abc978f9/w20224_f1_conv.jpg/rsrc/ji">
+
+"All CoVs show a marked decline in summer and autumn, with HKU1/OC43 peaking
+January–December, and NL63 and 229E peaking in February–March."
+
+Same results are found in the US (<a
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7106380/">Human coronavirus
+circulation in the United States 2014–2017</a> and <a
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7184402/">Coronavirus
+occurrence and transmission over 8 years in the HIVE cohort of households in
+Michigan</a>).
+
+
+<h4>Southern Hemisphere</h4>
+
+We can already see fall/winter waves in the non-tropical countries of the
+southern hemisphere (where the seasons are shifted six months). Though it's
+not a perfect fit considering Argentina.
+
+<iframe src="https://ourworldindata.org/coronavirus-data-explorer?zoomToSelection=true&minPopulationFilter=1000000&country=ARG~CHL~NZL~ZAF~AUS&region=World&casesMetric=true&interval=smoothed&hideControls=true&perCapita=true&smoothing=7&pickerMetric=location&pickerSort=asc" loading="lazy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+
+
+<h4>Herd Immunity</h4>
+
+It's unlikely your locale has built up enough population immunity to avoid a
+fall/winter wave. Few locales have built up as much population immunity as New
+York City, Lombardy (Italy), Madrid and Belgium.  These locales have had some
+of the highest levels of population infection.  Yet the case data rolling in
+for the past few weeks shows cases growing exponentially.  The <a
+href="https://epiforecasts.io/covid/posts/national/united-states/">growth rate
+estimates at epiforecasts.io</a> broadly predict exponential growth this late
+fall in the US.
+
+
+<h3>My Change In Plans</h3>
+
+I can share that my household opted out of our usual travel to Pennsylvania/DC
+for Thanksgiving.  It is sad, but I should point out that during our year in
+Spain, we did not eat a traditional Thanksgiving dinner with extended family
+nor friends. And we survived. It was quite easy to do in fact.
+
+<h3>1918</h3>
+
+The 1918 pandemic is similar, but also different, to our 2020 pandemic.
+Keeping that in mind, it is sobering to <a
+href="https://www.cdc.gov/flu/pandemic-resources/1918-commemoration/three-waves.htm">remember
+the 2nd larger wave of fall 1918</a>.
+
+
+{% endfilter %}
+
+<small>by Erik Castedo Ellerman</small>
+
+{% endblock content %}
+
