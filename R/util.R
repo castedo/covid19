@@ -32,6 +32,7 @@ scale_x_eow <- function(z) {
 autoplot.weekly.bar <- function(weekly) {
   autoplot(weekly, geom='blank') +
     scale_x_date(breaks = time(weekly), date_labels = "%b %d") +
+    theme(axis.text.x = element_text(angle = 60, hjust=1)) +
     geom_col(position = position_nudge(x = -3))
 }
 

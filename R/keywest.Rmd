@@ -40,6 +40,7 @@ See [a historical perspective](../risk/history.html) for a broad context.
 [ * What is counted as a death from COVID-19?](https://ourworldindata.org/coronavirus#deaths-from-covid-19-background)
 </small>
 
+<!--
 ### Q3: Is coronavirus <a href="https://en.wikipedia.org/wiki/Endemic_(epidemiology)">endemic</a> yet?
 
 % of population dead due to COVID
@@ -55,7 +56,6 @@ autoplot(fracmort, facet=NULL) +
   scale_y_continuous(limits=c(0,0.003), labels=scales::percent_format(accuracy=0.1))
 ```
 
-<!--
 ### Q4: Can the Keys "beat" coronavirus?
 
 **Answer: Apparently not.**

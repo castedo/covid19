@@ -14,6 +14,7 @@ ref <- data.frame(
   txt=c("2010-2019", "1950-1951", "1940-1941", "1900-1901", "1865"))
 autoplot.weekly.bar(weekly.deltas(local$deaths)) +
   geom_hline(aes(yintercept=y, color=txt), ref) +
+  theme(axis.text.x = element_text(angle = 60, hjust=1)) +
   labs(x="Date", y="Weekly Deaths Per Million",
        color="Reference\nAverage\nFlu/Pneumonia/TB**")
 ```

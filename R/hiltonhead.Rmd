@@ -15,30 +15,11 @@ local <- local.num/pop*1e6
 
 `r format(pop/1e6, digits=2)` million inhabitants of `r unique(local.data$County)` counties
 
-<div>Top three questions:</div>
-<ul>
-<li>Q1: Is an outbreak starting?</li>
-<li>Q2: How dangerous is it now?</li>
-<li>Q3: 
-  How close is `r location` to [herd immunity](../hit.html)?
-</li>
-</ul>
-
 ```{r child="child/Q1.Rmd"}
 ```
 
 ```{r child="child/Q2.Rmd"}
 ```
-
-```{r message=FALSE, warning=FALSE}
-fracmort <- merge(fav.fracmort(), local=local$deaths/1e6)
-names(fracmort)[which(names(fracmort)=='local')] <- location
-```
-
-```{r child="child/Q3.Rmd"}
-```
-
-#### Data Check
 
 ```{r child="child/check.Rmd"}
 ```
