@@ -44,6 +44,7 @@ autoplot(losers, facet=NULL) +
   scale_y_continuous(limits=c(0,top)) +
   geom_point() +
   scale_x_eow(losers) +
+  theme(axis.text.x = element_text(angle = 60, hjust=1)) +
   xlab("2020") +
   ylab("Weekly COVID Deaths Per Million")
 ```
@@ -73,6 +74,7 @@ autoplot(winners, facet=NULL) +
   scale_y_continuous(limits=c(0,top)) +
   geom_point() +
   scale_x_eow(losers) +
+  theme(axis.text.x = element_text(angle = 60, hjust=1)) +
   xlab("2020") +
   ylab("Weekly COVID Deaths Per Million")
 ```
