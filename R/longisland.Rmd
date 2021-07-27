@@ -21,6 +21,9 @@ local <- local.num/pop*1e6
 ```{r child="child/Q2.Rmd"}
 ```
 
+```{r child="child/Q3.Rmd"}
+```
+
 ```{r child="child/check.Rmd"}
 ```
 
