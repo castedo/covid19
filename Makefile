@@ -44,7 +44,7 @@ data/agregados.csv:
 src/_build/R/%.md: R/%.Rmd $(ALLDATA) | src/_build/R/.
 	Rscript --no-init-file --no-site-file make_knit.R $< $@
 
-PANDOC_OPTS=--filter pandoc-citeproc --bibliography=covid19.bib -fmarkdown-implicit_figures
+PANDOC_OPTS=-fmarkdown-implicit_figures
 
 src/_build/R/%.html : src/_build/R/%.md
 	pandoc $< --mathjax $(PANDOC_OPTS) -t html -o $@
